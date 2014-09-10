@@ -1,0 +1,41 @@
+Initialize engine version: 4.5.3f3 (fca41a4fabea)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: ATI FirePro V(FireGL V) Graphics Adapter (ID=0x6809)
+    Vendor:   ATI
+    VRAM:     2006 MB
+FMOD failed to initialize ... A call to a standard soundcard driver failed, which could possibly mean a bug in the driver or resources were missing or exhausted. 
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/Runtime/Audio/AudioManager.cpp Line: 239)
+
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\project1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\project1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\project1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\project1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.071 seconds
+<RI> Initializing input.
+XInput1_3.dll not found.
+<RI> Input initialized.
+desktop: 2560x1440 60Hz; virtual: 5520x1511 at -2960,0
+Profiler is only supported with Pro License
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/Runtime/Profiler/ProfilerConnection.cpp Line: 218)
+
+1280,720
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Main:Start() (at D:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\Assets\Scripts\Main.cs:35)
+ 
+(Filename: D Line: 0)
+
+(n) (informal) A recommendation or suggestion.\n(v) (informal) To recommend something such as a @book@, @movie@, @product@ etc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+MTW.Dictionary:Init(TextAsset) (at D:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\Assets\Scripts\Dictionary.cs:42)
+Main:Start() (at D:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\Assets\Scripts\Main.cs:39)
+ 
+(Filename: D Line: 0)
+
+Waiting for finish

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0fc58529f42a58f4e825ab60ce943252
+TrueTypeFontImporter:
+  serializedVersion: 2
+  fontSize: 500
+  forceTextureCase: 3
+  characterSpacing: 1
+  characterPadding: 0
+  includeFontData: 1
+  use2xBehaviour: 0
+  fontNames:
+  - 
+  customCharacters: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  fontRenderingMode: 0
+  userData: 
