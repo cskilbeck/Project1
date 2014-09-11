@@ -23,6 +23,10 @@ public class Piece : MonoBehaviour
 	public SpriteRenderer tileSpriteRenderer;
 	private TextMesh letterTextMesh;
 	private char letter;
+	private float x;
+	private float y;
+	private float xoffset;
+	private float yoffset;
 
 	////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
@@ -72,14 +76,16 @@ public class Piece : MonoBehaviour
 	public void Setup(Transform parent)
 	{
 		tileTransform = transform.Find ("Tile");
+		tileTransform.localPosition = new Vector3(0, -96, 0);
+		tileTransform.localScale = new Vector3(1, 1, 1);
+
 		letterTransform = transform.Find ("Letter");
 		tileSpriteRenderer = tileTransform.GetComponent<SpriteRenderer> ();
 		letterTextMesh = letterTransform.GetComponent<TextMesh> ();
 		letterTextMesh.transform.Translate(new Vector3(48, 48, 0));
 		tileSpriteRenderer.sortingOrder = 1;
-		tileTransform.localPosition = new Vector3(0, -96, 0);
-		tileTransform.localScale = new Vector3(1, 1, 1);
 		letterTextMesh.renderer.sortingOrder = 2;
+
 		transform.parent = parent;
 	}
 
@@ -157,6 +163,33 @@ public class Piece : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////
 	
+	void OnMouseDown()
+	{
+		Vector3 v = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 0));
+		xoffset = transform.position.x - v.x;
+		yoffset = transform.position.y - v.y;
+		tileSpriteRenderer.sortingOrder = 3;
+		letterTextMesh.renderer.sortingOrder = 4;
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////
+	
+	void OnMouseUp()
+	{
+		tileSpriteRenderer.sortingOrder = 1;
+		letterTextMesh.renderer.sortingOrder = 2;
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////
+	
+	void OnMouseDrag()
+	{
+		Vector3 v = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 0));
+		transform.position = new Vector3(v.x + xoffset, v.y + yoffset, 0);
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////
+	
 	void Start ()
 	{
 	}
@@ -164,6 +197,8 @@ public class Piece : MonoBehaviour
 	////////////////////////////////////////////////////////////////////////////////////
 	
 	void Update ()
-	{	
+	{
+		x = Input.mousePosition.x;
+		y = Input.mousePosition.y;
 	}
 }

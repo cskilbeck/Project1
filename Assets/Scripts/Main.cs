@@ -32,7 +32,6 @@ public class Main : MonoBehaviour {
 	void Start ()
 	{
 		Screen.SetResolution(1280, 720, false);
-		Debug.Log (Screen.width.ToString() + "," + Screen.height.ToString());
 		CreateTiles();
 		Camera.main.projectionMatrix = Matrix4x4.Ortho(0, Screen.width, Screen.height, 0, 0, 100);
 		TextAsset dictionary = (TextAsset)Resources.Load ("Dictionary");
@@ -41,7 +40,6 @@ public class Main : MonoBehaviour {
 		GameObject boardPrefab = (GameObject)Resources.Load("Board");
 		board = ((GameObject)Instantiate(boardPrefab, Vector3.zero, Quaternion.identity)).GetComponent<Board>();
 		board.Setup();
-
 		board.MarkAllWords();
 	}
 	

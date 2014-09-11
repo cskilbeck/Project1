@@ -8,8 +8,12 @@ public class Board : MonoBehaviour {
 	private GameObject tilePrefab;
 	private Piece[] pieces;
 	private Main main;
+
+	[HideInInspector]
 	public int width;
+	[HideInInspector]
 	public int height;
+	[HideInInspector]
 	public int score;
 
 	private List<Word> foundWords = new List<Word>();
@@ -23,7 +27,7 @@ public class Board : MonoBehaviour {
 		height = main.boardHeight;
 		pieces = new Piece[main.boardWidth * main.boardHeight];
 		tilePrefab = (GameObject)Resources.Load("Piece");
-		MTW.Letters.Seed(1);
+		MTW.Letters.Seed(2);
 		int i = 0;
 		for(int y = 0; y < main.boardHeight; ++y) {
 			for(int x = 0; x < main.boardWidth; ++x) {
@@ -95,10 +99,10 @@ public class Board : MonoBehaviour {
 
 		foundWords.Sort();
 
-		foreach(MTW.Word w in foundWords)
-		{
-			//Debug.Log("Found: " + w.word.text + " at " + w.x.ToString() + "," + w.y.ToString());
-		}
+//		foreach(MTW.Word w in foundWords)
+//		{
+//			Debug.Log("Found: " + w.word.text + " at " + w.x.ToString() + "," + w.y.ToString());
+//		}
 		
 		score = 0;
 		foreach(MTW.Word w in foundWords)
@@ -134,7 +138,7 @@ public class Board : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-		this.transform.Translate(new Vector3(0.1f, 0, 0));
+		//this.transform.Translate(new Vector3(1, 0, 0));
 		//this.transform.RotateAround(new Vector3(3, 2, 0), new Vector3(0, 0, 1), 1);
 	}
 }

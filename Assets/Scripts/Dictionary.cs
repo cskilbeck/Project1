@@ -39,7 +39,7 @@ namespace MTW
 				words.Add(word, new MTW.Dictionary.Word (i, word, definition, CalculateWordScore(word)));
 				++i;
 			}
-			Debug.Log(GetDefinition("rec"));
+			//Debug.Log(GetDefinition("rec"));
 		}
 
 		private static int CalculateWordScore(string word)
