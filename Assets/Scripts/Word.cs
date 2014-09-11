@@ -5,15 +5,12 @@ namespace MTW
 {
 	public class Word : IComparable
 	{
-		public enum Orientation
-		{
-			horizontal = 0,
-			vertical = 1
-		}
+		public static int horizontal = 0;
+		public static int vertical = 1;
 
 		public int x;
 		public int y;
-		public Orientation orientation;
+		public int orientation;
 		public DictionaryWord word;
 
 		public int CompareTo(Object o)
@@ -26,7 +23,7 @@ namespace MTW
 					(word.text.Length - b.word.text.Length);
 		}
 
-		public Word (int x, int y, Orientation orientation, MTW.Dictionary.Word word)
+		public Word (int x, int y, int orientation, DictionaryWord word)
 		{
 			this.x = x;
 			this.y = y;

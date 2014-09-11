@@ -4,16 +4,13 @@ namespace Util
 {
 	public class Random
 	{
-		private UInt32 Z;
-		private UInt32 W;
+		private UInt32 x, y, z, w, v;
 
 		public Random()
 		{
-			Int64 t = DateTime.Now.Ticks;
-			Z = (UInt32)t;
-			W = (UInt32)(t >> 32);
+			Seed((UInt32)DateTime.Now.Ticks);
 		}
-
+		
 		public Random(UInt32 seed)
 		{
 			Seed(seed);
@@ -21,15 +18,22 @@ namespace Util
 
 		public void Seed(UInt32 seed)
 		{
-			Z = seed;
-			W = ~seed;
+			x = 123456789;
+			y = 362436069;
+			z = 521288629;
+			w = 88675123;
+			v = seed;
 		}
 
 		public UInt32 Next()
 		{
-			Z = 36969 * (Z & 65535) + (Z >> 16);
-			W = 18000 * (W & 65535) + (W >> 16);
-			return (Z << 16) + W;
+			UInt32 t = (x ^ (x >> 7));
+			x = y;
+			y = z;
+			z = w;
+			w = v;
+			v = (v ^ (v << 6)) ^ (t ^ (t << 13));
+			return ((y + y + 1) * v) >> 16;
 		}
 		
 		public float NextFloat()

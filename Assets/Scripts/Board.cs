@@ -49,7 +49,7 @@ public class Board : MonoBehaviour {
 		return pieces[(w.x + xo * index) + (w.y + yo * index) * width];
 	}
 	
-	private void MarkWordPass(MTW.Word.Orientation orientation, int offsetVector, int limit, int xMul, int yMul)
+	private void MarkWordPass(int orientation, int offsetVector, int limit, int xMul, int yMul)
 	{
 		int xLim = width - 2 * xMul;
 		int yLim = height - 2 * yMul;
@@ -94,8 +94,8 @@ public class Board : MonoBehaviour {
 		foundWords.Clear();
 		validWords.Clear();
 
-		MarkWordPass(Word.Orientation.horizontal, 1, width, 1, 0);
-		MarkWordPass(Word.Orientation.vertical, width, height, 0, 1);
+		MarkWordPass(Word.horizontal, 1, width, 1, 0);
+		MarkWordPass(Word.vertical, width, height, 0, 1);
 
 		foundWords.Sort();
 
@@ -113,8 +113,8 @@ public class Board : MonoBehaviour {
 			for(int i = 0; i < text.Length; ++i)
 			{
 				Piece p = GetWordPiece(w, i);
-				if (p.verticalWordDetails.position != Piece.WordPosition.None && w.orientation == Word.Orientation.vertical ||
-				    p.horizontalWordDetails.position != Piece.WordPosition.None && w.orientation == Word.Orientation.horizontal)
+				if (p.IsPartOf(Word.vertical) && w.orientation == Word.vertical ||
+				    p.IsPartOf(Word.horizontal) && w.orientation == Word.horizontal)
 				{
 					isValid = false;
 					break;
