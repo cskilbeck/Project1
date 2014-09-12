@@ -2,16 +2,15 @@ Initialize engine version: 4.5.3f3 (fca41a4fabea)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: ATI FirePro V(FireGL V) Graphics Adapter (ID=0x6809)
+    Renderer: AMD Radeon R7 200 Series (ID=0x6658)
     Vendor:   ATI
-    VRAM:     2006 MB
+    VRAM:     1987 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: d:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\project1_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading d:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\project1_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: d:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\project1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading d:\Users\chs\Documents\Visual Studio 2012\Projects\Unity\Project1\project1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.056 seconds
+Platform assembly: D:\Users\charlie\Projects\Project1\project1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Users\charlie\Projects\Project1\project1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Users\charlie\Projects\Project1\project1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Users\charlie\Projects\Project1\project1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.031 seconds
 <RI> Initializing input.
-XInput1_3.dll not found.
 <RI> Input initialized.
-desktop: 2560x1440 60Hz; virtual: 5520x1511 at -2960,0
+desktop: 1920x1080 60Hz; virtual: 5440x1319 at -1600,-239
