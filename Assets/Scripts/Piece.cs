@@ -30,7 +30,7 @@ public class Piece : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
-	/// WordPosition. Where in a word is this tile
+	/// WordPosition. Where in a word is this tile. These numbers are used to index into the atlas
 	/// </summary>
 	
 	public enum WordPosition : int
