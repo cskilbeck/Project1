@@ -54,23 +54,24 @@ public class Main : MonoBehaviour {
 
 		arialFont = new Font("Arial");
 
+		Font.Glyph g = arialFont.glyphs['J'];
+		
 		letter[0] = new GameObject();
 		letter[1] = new GameObject();
 
 		letter[0].AddComponent<SpriteRenderer>();
 		letter[1].AddComponent<SpriteRenderer>();
 
-		letter[0].GetComponent<SpriteRenderer>().sprite = arialFont.glyphs['A'].images[0];
-		letter[1].GetComponent<SpriteRenderer>().sprite = arialFont.glyphs['A'].images[1];
+		letter[0].GetComponent<SpriteRenderer>().sprite = g.images[0];
+		letter[1].GetComponent<SpriteRenderer>().sprite = g.images[1];
 
-		letter[0].transform.localPosition = arialFont.glyphs['A'].offsets[0];
-		letter[1].transform.localPosition = arialFont.glyphs['A'].offsets[1];
+		letter[0].transform.localPosition = g.offsets[0];
+		letter[1].transform.localPosition = g.offsets[1];
 
-		//letter[0].transform.localRotation = Quaternion.AngleAxis(180, Vector3.forward);
-		//letter[1].transform.localRotation = Quaternion.AngleAxis(180, Vector3.forward);
 		letter[1].transform.parent = letter[0].transform;
 
 		letter[0].transform.Translate(new Vector2(100, 100));
+		letter[0].transform.RotateAround(new Vector2(100, 100), Vector3.forward, 180);
 
 
 //		GameObject boardPrefab = (GameObject)Resources.Load("Board");

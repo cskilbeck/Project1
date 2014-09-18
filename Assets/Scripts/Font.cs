@@ -99,6 +99,7 @@ namespace FontUtil
 				float th = (float)texture.height;
 				for(int j = 0; j < imageCount; ++j)
 				{
+					int k = imageCount - 1 - j;
 					SimpleJSON.JSONNode inode = glyphNode["images"][j];
 					float ox = inode["offsetX"].AsFloat;
 					float oy = inode["offsetY"].AsFloat;
@@ -106,8 +107,8 @@ namespace FontUtil
 					float y = inode["y"].AsInt;
 					float w = inode["w"].AsInt;
 					float h = inode["h"].AsInt;
-					images[imageCount-1-j] = Sprite.Create(texture, new Rect(x, texture.height-h-y, w, -h), new Vector2(0, 0), 1);
-					offs[imageCount-1-j] = new Vector2(ox, oy);
+					images[k] = Sprite.Create(texture, new Rect(x, th-y, w, -h), new Vector2(0, 0), 1);
+					offs[k] = new Vector2(ox, -oy);
 				}
 				glyphs.Add((char)c, new Glyph(imageCount, advance, images, offs));
 			}
