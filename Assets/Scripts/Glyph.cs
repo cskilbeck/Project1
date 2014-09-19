@@ -6,21 +6,25 @@ using UnityEngine;
 
 /////////////////////////////////////////////////////////////////////////////
 
-namespace FontUtil
+namespace Font
 {
 	/////////////////////////////////////////////////////////////////////////////
 	
 	public class Glyph
 	{
 		public GameObject[] letter;
+		public float advance;
 
-		public Glyph(Font font, char c)
+		public Glyph(TypeFace font, char c)
 		{
-			Font.GlyphDescriptor g = font.glyphs['G'];
+			TypeFace.GlyphDescriptor g = font.glyphs[c];
 
 			letter = new GameObject[g.imageCount];
+			advance = g.advance;
 
-			for (int i=0; i<g.imageCount; ++i)
+			int ic = g.imageCount;
+
+			for (int i=0; i<ic; ++i)
 			{
 				letter[i] = new GameObject();
 				letter[i].AddComponent<SpriteRenderer>();
@@ -30,6 +34,7 @@ namespace FontUtil
 					letter[i].transform.parent = letter[0].transform;
 				}
 				letter[i].transform.localPosition = g.offsets[i];
+				letter[i].GetComponent<SpriteRenderer>().sortingOrder = (ic - i) + 20;
 			}
 			letter[0].transform.localScale = new Vector2 (1, -1);
 		}

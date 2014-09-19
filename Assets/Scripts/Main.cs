@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using MTW;
-using Font = FontUtil.Font;
+using Font;
+using TypeFace = Font.TypeFace;
 
 public class Main : MonoBehaviour {
 
@@ -15,14 +16,16 @@ public class Main : MonoBehaviour {
 	public Board board;
 
 	[HideInInspector]
-	public Font arialFont;
+	public TypeFace arialFont;
 
 	GameObject[] letter = new GameObject[2];
+
+	Font.Text t;
 
 	private void CreateTiles()
 	{
 		Texture2D t = (Texture2D)Resources.Load("allColour");
-		t.filterMode = FilterMode.Point;
+		t.filterMode = FilterMode.Trilinear;
 		int i = 0;
 		for(int y=0; y<5; ++y)
 		{
@@ -40,28 +43,24 @@ public class Main : MonoBehaviour {
 		Screen.SetResolution(1280, 720, false);
 		CreateTiles();
 		Camera.main.projectionMatrix = Matrix4x4.Ortho(0, Screen.width, Screen.height, 0, 0, 100);
-//		TextAsset dictionary = (TextAsset)Resources.Load ("Dictionary");
-//		MTW.Dictionary.Init(dictionary);
 
-		// Load the texture
-		// create a gameobject
-		// add a spriterenderer to the gameobject
-		// create a sprite from the texture
-		// set the spriterenderer.sprite to the sprite
+		TextAsset dictionary = (TextAsset)Resources.Load ("Dictionary");
+		MTW.Dictionary.Init(dictionary);
 
-		//fontPage = (GameObject)Instantiate<FontPage>();
-		//fontPage.transform.parent = main.transform;
-
-		Vector2 pos = new Vector2 (50, 50);
-
-		arialFont = new Font("Arial");
-
-		FontUtil.Glyph gl = new FontUtil.Glyph (arialFont, 'K');
+		GameObject boardPrefab = (GameObject)Resources.Load("Board");
+		board = ((GameObject)Instantiate(boardPrefab, Vector3.zero, Quaternion.identity)).GetComponent<Board>();
+		board.Setup();
+		board.MarkAllWords();
+		
+		arialFont = new TypeFace("Arial");
+		t = new Font.Text (arialFont, "HELLO");
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-//		letter[0].transform.Translate(new Vector3(1, 1, 0));
+		t.root.transform.rotation = Quaternion.identity;
+		t.root.transform.position = new Vector3 (100, 100);
+		t.root.transform.RotateAround (new Vector3 (200, 120, 0), Vector3.forward, Mathf.Sin(Time.realtimeSinceStartup * 4) * 90);
 	}
 }

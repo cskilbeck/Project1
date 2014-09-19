@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using MTW;
 
-public class Board : MonoBehaviour {
+public class Board : MonoBehaviour
+{
 
 	private GameObject tilePrefab;
 	private Piece[] pieces;
@@ -32,7 +33,7 @@ public class Board : MonoBehaviour {
 		for(int y = 0; y < main.boardHeight; ++y) {
 			for(int x = 0; x < main.boardWidth; ++x) {
 				Piece p = ((GameObject)Instantiate(tilePrefab, new Vector3(x * 96, y * 96, 0), Quaternion.identity)).GetComponent<Piece>();
-				p.Setup(transform);
+				p.Setup(main.transform);
 				p.SetSprite(Main.tileFrames[(int)(Random.value * Main.tileFrames.Length)]);
 				//p.SetSprite(main.tileFrames[0]);
 				p.Letter = MTW.Letters.GetRandomLetter();
@@ -139,6 +140,6 @@ public class Board : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 		//this.transform.Translate(new Vector3(1, 0, 0));
-		//this.transform.RotateAround(new Vector3(3, 2, 0), new Vector3(0, 0, 1), 1);
+//		this.transform.RotateAround(new Vector3(3, 2, 0), new Vector3(0, 0, 1), 1);
 	}
 }
