@@ -36,7 +36,7 @@ namespace FontUtil
 
 		/////////////////////////////////////////////////////////////////////////////
 		
-		public class Glyph
+		public class GlyphDescriptor
 		{
 			public char c;
 			public int imageCount;
@@ -44,7 +44,7 @@ namespace FontUtil
 			public Sprite[] images;
 			public Vector2[] offsets;
 
-			public Glyph(int imgCount, float advnce, Sprite[] imgs, Vector2[] offs)
+			public GlyphDescriptor(int imgCount, float advnce, Sprite[] imgs, Vector2[] offs)
 			{
 				imageCount = imgCount;
 				advance = advnce;
@@ -56,7 +56,7 @@ namespace FontUtil
 		/////////////////////////////////////////////////////////////////////////////
 		
 		public Layer[] layers;
-		public Dictionary<char, Glyph> glyphs;
+		public Dictionary<char, GlyphDescriptor> glyphs;
 
 		/////////////////////////////////////////////////////////////////////////////
 		
@@ -82,7 +82,7 @@ namespace FontUtil
 				layers[i] = new Layer(xoffset, yoffset);				// add a layer
 			}
 
-			glyphs = new Dictionary<char, Glyph>();						// create the Glyphs dctionary
+			glyphs = new Dictionary<char, GlyphDescriptor>();						// create the Glyphs dctionary
 
 			int glyphNodeCount = d["glyphs"].Count;						// get count of glyph nodes
 
@@ -110,7 +110,7 @@ namespace FontUtil
 					images[k] = Sprite.Create(texture, new Rect(x, th-y, w, -h), new Vector2(0, 0), 1);
 					offs[k] = new Vector2(ox, -oy);
 				}
-				glyphs.Add((char)c, new Glyph(imageCount, advance, images, offs));
+				glyphs.Add((char)c, new GlyphDescriptor(imageCount, advance, images, offs));
 			}
 		}
 	}

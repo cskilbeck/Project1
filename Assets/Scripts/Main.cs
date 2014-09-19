@@ -52,42 +52,16 @@ public class Main : MonoBehaviour {
 		//fontPage = (GameObject)Instantiate<FontPage>();
 		//fontPage.transform.parent = main.transform;
 
+		Vector2 pos = new Vector2 (50, 50);
+
 		arialFont = new Font("Arial");
 
-		Font.Glyph g = arialFont.glyphs['J'];
-		
-		letter[0] = new GameObject();
-		letter[1] = new GameObject();
-
-		letter[0].AddComponent<SpriteRenderer>();
-		letter[1].AddComponent<SpriteRenderer>();
-
-		letter[0].GetComponent<SpriteRenderer>().sprite = g.images[0];
-		letter[1].GetComponent<SpriteRenderer>().sprite = g.images[1];
-
-		letter[0].transform.localPosition = g.offsets[0];
-		letter[1].transform.localPosition = g.offsets[1];
-
-		letter[1].transform.parent = letter[0].transform;
-
-		letter[0].transform.Translate(new Vector2(100, 100));
-		letter[0].transform.RotateAround(new Vector2(100, 100), Vector3.forward, 180);
-
-
-//		GameObject boardPrefab = (GameObject)Resources.Load("Board");
-//		board = ((GameObject)Instantiate(boardPrefab, Vector3.zero, Quaternion.identity)).GetComponent<Board>();
-//		board.Setup();
-//		board.MarkAllWords();
-
-		//arialFont.CreateLetter('A', 0, 0);
+		FontUtil.Glyph gl = new FontUtil.Glyph (arialFont, 'K');
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		//letter[0].transform.Translate(new Vector3(0.1f,0.1f,0));
-//		newPage.transform.RotateAround(new Vector3(256, 256, 0), Vector3.forward, 1);
-//		fontPage.transform.Translate(new Vector3(1.5f, 2.5f, 0));
-//		newPage.GetComponent<SpriteRenderer>().sprite = tileFrames[0];
+//		letter[0].transform.Translate(new Vector3(1, 1, 0));
 	}
 }
