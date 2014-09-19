@@ -18,8 +18,6 @@ public class Main : MonoBehaviour {
 	[HideInInspector]
 	public TypeFace arialFont;
 
-	GameObject[] letter = new GameObject[2];
-
 	Font.Text t;
 
 	private void CreateTiles()
