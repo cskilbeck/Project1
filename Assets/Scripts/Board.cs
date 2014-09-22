@@ -32,7 +32,7 @@ public class Board : MonoBehaviour
             {
                 Piece p = Piece.Create();
                 p.Position = new Vector2(x * 96, y * 96);
-                p.Sprite = Main.GetTileFrame(0, 4);
+                p.Sprite = Tiles.Get(0, 4);
                 p.Letter = Letters.GetRandomLetter();
                 p.transform.parent = this.transform;
 				pieces[i++] = p;

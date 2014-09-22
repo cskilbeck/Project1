@@ -10,7 +10,7 @@ class Piece : ScriptableObject
 {
     //////////////////////////////////////////////////////////////////////
 
-    public GameObject goTile;
+    private GameObject goTile;
     private Sprite tile;
     private SpriteRenderer tileRenderer;
     private Glyph glyph;
@@ -134,7 +134,7 @@ class Piece : ScriptableObject
         {
             v = 4;
         }
-        this.Sprite = Main.GetTileFrame(u, v);
+        this.Sprite = Tiles.Get(u, v);
     }
 
     //////////////////////////////////////////////////////////////////////

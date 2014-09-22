@@ -35,9 +35,10 @@ public static class Dictionary
 
     //////////////////////////////////////////////////////////////////////
 
-    public static void Init(TextAsset dictionary)
+    public static void Init()
 	{
-		StringReader reader = new StringReader(dictionary.text);
+        TextAsset dictionary = (TextAsset)Resources.Load("Dictionary");
+        StringReader reader = new StringReader(dictionary.text);
 		string line;
 		int i = 0;
 		while((line = reader.ReadLine()) != null) {
@@ -47,7 +48,6 @@ public static class Dictionary
 			words.Add(word, new Dictionary.Word (i, word, definition, CalculateWordScore(word)));
 			++i;
 		}
-		//Debug.Log(GetDefinition("rec"));
 	}
 
     //////////////////////////////////////////////////////////////////////
