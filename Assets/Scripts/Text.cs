@@ -13,10 +13,14 @@ namespace Font
 	
 	public class Text
 	{
-		public GameObject root;
+        //////////////////////////////////////////////////////////////////////
+
+        public GameObject root;
 		public Glyph[] letters;
 
-		public Text(TypeFace font, string s)
+        //////////////////////////////////////////////////////////////////////
+
+        public Text(TypeFace font, string s)
 		{
 			root = new GameObject();
 			letters = new Glyph[s.Length];
@@ -24,7 +28,7 @@ namespace Font
 			float x = 0;
 			foreach(char c in s)
 			{
-				letters[i] = new Glyph(font, c);
+                letters[i] = Glyph.Create(font, c);
 				letters[i].transform.Translate(new Vector2(x, 0));
 				x += letters[i].advance;
 				letters[i].transform.parent = root.transform;

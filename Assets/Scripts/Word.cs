@@ -1,50 +1,64 @@
+//////////////////////////////////////////////////////////////////////
+
 using System;
-using DictionaryWord = MTW.Dictionary.Word;
 
-namespace MTW
+//////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////
+
+public class Word : IComparable
 {
-	public class Word : IComparable
+    //////////////////////////////////////////////////////////////////////
+
+    public static int horizontal = 0;
+	public static int vertical = 1;
+
+    //////////////////////////////////////////////////////////////////////
+
+    public int x;
+	public int y;
+	public int orientation;
+	public Dictionary.Word word;
+
+    //////////////////////////////////////////////////////////////////////
+
+    public int CompareTo(Object o)
 	{
-		public static int horizontal = 0;
-		public static int vertical = 1;
+		Word b = o as Word;
+		return (score < b.score) ? 1 :
+				(score > b.score) ? -1 : 
+				(length < b.length) ? 1 :
+				(length > b.length) ? -1 :
+				(word.text.Length - b.word.text.Length);
+	}
 
-		public int x;
-		public int y;
-		public int orientation;
-		public DictionaryWord word;
+    //////////////////////////////////////////////////////////////////////
 
-		public int CompareTo(Object o)
+    public Word(int x, int y, int orientation, Dictionary.Word word)
+	{
+		this.x = x;
+		this.y = y;
+		this.orientation = orientation;
+		this.word = word;
+	}
+
+    //////////////////////////////////////////////////////////////////////
+
+    public int length
+	{
+		get
 		{
-			Word b = o as Word;
-			return (score < b.score) ? 1 :
-					(score > b.score) ? -1 : 
-					(length < b.length) ? 1 :
-					(length > b.length) ? -1 :
-					(word.text.Length - b.word.text.Length);
+			return word.text.Length;
 		}
+	}
 
-		public Word (int x, int y, int orientation, DictionaryWord word)
-		{
-			this.x = x;
-			this.y = y;
-			this.orientation = orientation;
-			this.word = word;
-		}
+    //////////////////////////////////////////////////////////////////////
 
-		public int length
+    public int score
+	{
+		get
 		{
-			get
-			{
-				return word.text.Length;
-			}
-		}
-
-		public int score
-		{
-			get
-			{
-				return word.score;
-			}
+			return word.score;
 		}
 	}
 }

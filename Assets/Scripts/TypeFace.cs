@@ -71,7 +71,7 @@ namespace Font
 			name = d["name"].Value;										// get the name
 			height = d["height"].AsInt;									// and the height
 			int layerCount = d["layerCount"].AsInt;						// and the layercount
-			int glyphCount = d["glyphCount"].AsInt;						// and the glyphcount
+			glyphCount = d["glyphCount"].AsInt;						    // and the glyphcount
 
 			SimpleJSON.JSONNode layersNodes = d["Layers"];				// get the node with the layers in it
 			layers = new Layer[layersNodes.Count];						// create array of layers
@@ -93,10 +93,8 @@ namespace Font
 				int c = glyphNode["char"].AsInt;
 				int imageCount = glyphNode["imageCount"].AsInt;
 				float advance = glyphNode["advance"].AsFloat;
-				int imageNodes = glyphNode["images"].Count;
 				Sprite[] images = new Sprite[imageCount];
 				Vector2[] offs = new Vector2[imageCount];
-				float tw = (float)texture.width;
 				float th = (float)texture.height;
 				for(int j = 0; j < imageCount; ++j)
 				{
