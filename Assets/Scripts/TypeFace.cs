@@ -105,7 +105,8 @@ namespace Font
 					float y = inode["y"].AsInt;
 					float w = inode["w"].AsInt;
 					float h = inode["h"].AsInt;
-					images[k] = Sprite.Create(texture, new Rect(x, th-y, w, -h), new Vector2(0, 1), 1);
+                    Vector2 pivot = Vector2.zero;
+					images[k] = Sprite.Create(texture, new Rect(x, th-y-h, w, h), pivot, 1);
 					offs[k] = new Vector2(ox, oy);
 				}
 				glyphs.Add((char)c, new GlyphDescriptor(imageCount, advance, images, offs));

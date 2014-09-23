@@ -12,6 +12,7 @@ namespace Font
 	
 	public class Glyph
 	{
+        public GameObject root;
 		public GameObject[] letter;
 		public float advance;
 
@@ -34,6 +35,7 @@ namespace Font
             int ic = g.imageCount;
             if (ic > 0)
             {
+                root = new GameObject("Glyph");
                 letter = new GameObject[Math.Max(1, g.imageCount)];
                 for (int i = 0; i < ic; ++i)
                 {
@@ -42,13 +44,10 @@ namespace Font
                     SpriteRenderer sr = letter[i].AddComponent<SpriteRenderer>();
                     sr.sprite = g.images[i];
                     l.transform.localPosition = g.offsets[i];
-                    if (i != 0)
-                    {
-                        l.transform.parent = letter[0].transform;
-                    }
+                    l.transform.parent = root.transform;
                     sr.sortingOrder = (ic - i) + 20;
                 }
-                letter[0].transform.localScale = new Vector2(1, -1);
+                root.transform.localScale = new Vector2(1, -1);
             }
         }
 
@@ -68,7 +67,7 @@ namespace Font
 		{
 			get
 			{
-				return letter[0].transform;
+				return root.transform;
 			}
 		}
 	}

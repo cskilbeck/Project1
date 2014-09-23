@@ -58,7 +58,7 @@ public class Main : MonoBehaviour
 		t = new Font.Text(arialFont, "HELLO");
         t.transform.position = new Vector3(100, 100);
 
-        banner = new Font.Text(calibriFont, "ga");
+        banner = new Font.Text(calibriFont, "___.!^HkjhsadksWWWWiiiiiWWWWW");
         banner.transform.position = new Vector3(100, 600, 0);
 
         debugMessage = new Font.Text(debugFont, "Hello, World!");
