@@ -6,7 +6,7 @@ using Font;
 
 //////////////////////////////////////////////////////////////////////
 
-class Piece : ScriptableObject
+class Piece
 {
     //////////////////////////////////////////////////////////////////////
 
@@ -79,20 +79,12 @@ class Piece : ScriptableObject
 
     public Piece()
     {
-    }
-
-    //////////////////////////////////////////////////////////////////////
-
-    public static Piece Create()
-    {
-        Piece p = ScriptableObject.CreateInstance<Piece>();
-        p.goTile = new GameObject("Piece");
-        p.goTile.AddComponent<SpriteRenderer>();
-        p.tileRenderer = p.goTile.GetComponent<SpriteRenderer>();
-        p.tileRenderer.transform.localScale = new Vector3(1, -1, 1);
-        p.wordDetails[Word.horizontal] = new WordDetails();
-        p.wordDetails[Word.vertical] = new WordDetails();
-        return p;
+        goTile = new GameObject("Piece");
+        goTile.AddComponent<SpriteRenderer>();
+        tileRenderer = goTile.GetComponent<SpriteRenderer>();
+        tileRenderer.transform.localScale = new Vector3(1, -1, 1);
+        wordDetails[Word.horizontal] = new WordDetails();
+        wordDetails[Word.vertical] = new WordDetails();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
@@ -178,10 +170,11 @@ class Piece : ScriptableObject
         set
         {
             letter = value;
-            glyph = Glyph.Create(typeFace, letter);
+            glyph = new Glyph(typeFace, letter);
             Vector3 d = glyph.letter[0].renderer.bounds.center;
             glyph.transform.position = new Vector3(-d.x, -d.y) + goTile.transform.position;
             glyph.transform.parent = goTile.transform;
+            goTile.name = "Piece(" + Char.ToUpper(value).ToString() + ")";
         }
     }
 

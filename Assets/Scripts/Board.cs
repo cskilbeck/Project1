@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 //////////////////////////////////////////////////////////////////////
 
-public class Board : ScriptableObject
+public class Board
 {
     //////////////////////////////////////////////////////////////////////
 
@@ -22,19 +22,6 @@ public class Board : ScriptableObject
     //////////////////////////////////////////////////////////////////////
 
     public Board()
-    {
-    }
-
-    //////////////////////////////////////////////////////////////////////
-
-    public static Board Create()
-    {
-        return ScriptableObject.CreateInstance<Board>();
-    }
-
-    //////////////////////////////////////////////////////////////////////
-
-    public void Setup()
 	{
         root = new GameObject("Board");
 		pieces = new Piece[Main.boardWidth * Main.boardHeight];
@@ -44,7 +31,7 @@ public class Board : ScriptableObject
         {
 			for(int x = 0; x < Main.boardWidth; ++x)
             {
-                Piece p = Piece.Create();
+                Piece p = new Piece();
                 p.Sprite = Tiles.Get(0, 4);
                 p.Letter = Letters.GetRandomLetter();
                 p.Position = new Vector2(x * p.Width, y * p.Height);
@@ -53,6 +40,7 @@ public class Board : ScriptableObject
 			}
 		}
         root.transform.position = new Vector3(48, 48, 0);
+        MarkAllWords();
 	}
 
     //////////////////////////////////////////////////////////////////////
@@ -105,9 +93,9 @@ public class Board : ScriptableObject
 
     public void MarkAllWords()
 	{
-		foreach(Piece p in pieces)
-		{
-			p.ResetWords();
+        for (int i = 0, l = pieces.Length; i < l; ++i)
+        {
+            pieces[i].ResetWords();
 		}
 
 		foundWords.Clear();
@@ -119,34 +107,34 @@ public class Board : ScriptableObject
 		foundWords.Sort();
 		
 		score = 0;
-		foreach(Word w in foundWords)
+        for (int i = 0, l = foundWords.Count; i < l; ++i)
+        {
+            Word w = foundWords[i];
+            bool isValid;
+            isValid = true;
+            for (int t = 0, tl = w.word.text.Length; t < tl; ++t)
+            {
+                Piece p = GetWordPiece(w, t);
+                if (p.IsPartOf(Word.vertical) && w.orientation == Word.vertical ||
+                    p.IsPartOf(Word.horizontal) && w.orientation == Word.horizontal)
+                {
+                    isValid = false;
+                    break;
+                }
+            }
+            if (isValid)
+            {
+                validWords.Add(w);
+                score += w.score;
+                for (int t = 0, tl = w.word.text.Length; t < tl; ++t)
+                {
+                    GetWordPiece(w, t).SetWord(w, t);
+                }
+            }
+        }
+        for (int i = 0, l = pieces.Length; i < l; ++i)
 		{
-			bool isValid;
-			isValid = true;
-			string text = w.word.text;
-			for(int i = 0; i < text.Length; ++i)
-			{
-				Piece p = GetWordPiece(w, i);
-				if (p.IsPartOf(Word.vertical) && w.orientation == Word.vertical ||
-				    p.IsPartOf(Word.horizontal) && w.orientation == Word.horizontal)
-				{
-					isValid = false;
-					break;
-				}
-			}
-			if(isValid)
-			{
-				validWords.Add(w);
-				score += w.score;
-				for(int i=0; i<text.Length; ++i)
-				{
-					GetWordPiece(w, i).SetWord(w, i);
-				}
-			}
-		}
-		foreach(Piece p in pieces)
-		{
-			p.SetupTile();
+			pieces[i].SetupTile();
 		}
 	}
 

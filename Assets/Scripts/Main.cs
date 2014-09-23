@@ -38,14 +38,12 @@ public class Main : MonoBehaviour
         arialFont = new TypeFace("Arial");
         
         Piece.SetTypeFace(arialFont);
-        piece2 = Piece.Create();
+        piece2 = new Piece();
         piece2.Sprite = Tiles.Get(0, 0);
         piece2.Letter = 'Z';
         piece2.Position = new Vector2(600, 600);
 
-        board = Board.Create();
-		board.Setup();
-		board.MarkAllWords();
+        board = new Board();
 		
 		t = new Font.Text (arialFont, "HELLO");
 	}

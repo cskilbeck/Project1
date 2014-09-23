@@ -24,12 +24,12 @@ namespace Font
 		{
 			root = new GameObject("Text(" + s + ")");
 			letters = new Glyph[s.Length];
-			int i = 0;
 			float x = 0;
-			foreach(char c in s)
+            for(int i = 0, l = s.Length; i < l; ++i)
 			{
-                letters[i] = Glyph.Create(font, c);
-				letters[i].transform.Translate(new Vector2(x, 0));
+                char c = s[i];
+                letters[i] = new Glyph(font, c);
+				letters[i].transform.position = new Vector2(x, 0);
 				x += letters[i].advance;
 				letters[i].transform.parent = root.transform;
 			}

@@ -10,20 +10,14 @@ namespace Font
 {
 	/////////////////////////////////////////////////////////////////////////////
 	
-	public class Glyph : ScriptableObject
+	public class Glyph
 	{
 		public GameObject[] letter;
 		public float advance;
 
         //////////////////////////////////////////////////////////////////////
 
-        public Glyph()
-        {
-        }
-
-        //////////////////////////////////////////////////////////////////////
-
-        private void Init(TypeFace font, char c)
+        public Glyph(TypeFace font, char c)
         {
             TypeFace.GlyphDescriptor g;
             c = Char.ToUpper(c);
@@ -56,15 +50,6 @@ namespace Font
             }
             letter[0].transform.localScale = new Vector2(1, -1);
         }
-
-        //////////////////////////////////////////////////////////////////////
-
-        public static Glyph Create(TypeFace font, char c)
-        {
-            Glyph glyph = ScriptableObject.CreateInstance<Glyph>();
-            glyph.Init(font, c);
-            return glyph;
-		}
 
         //////////////////////////////////////////////////////////////////////
 
