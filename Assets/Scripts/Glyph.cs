@@ -44,7 +44,7 @@ namespace Font
 
             for (int i = 0; i < ic; ++i)
             {
-                letter[i] = new GameObject();
+                letter[i] = new GameObject("GlyphLayer" + i.ToString() + "(" + c.ToString() + ")");
                 letter[i].AddComponent<SpriteRenderer>();
                 letter[i].GetComponent<SpriteRenderer>().sprite = g.images[i];
                 if (i != 0)

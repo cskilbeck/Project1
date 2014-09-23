@@ -22,7 +22,7 @@ namespace Font
 
         public Text(TypeFace font, string s)
 		{
-			root = new GameObject();
+			root = new GameObject("Text(" + s + ")");
 			letters = new Glyph[s.Length];
 			int i = 0;
 			float x = 0;
