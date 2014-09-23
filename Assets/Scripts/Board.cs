@@ -6,23 +6,37 @@ using System.Collections.Generic;
 
 //////////////////////////////////////////////////////////////////////
 
-public class Board : MonoBehaviour
+public class Board : ScriptableObject
 {
     //////////////////////////////////////////////////////////////////////
 
-    [HideInInspector]
     public int score;
 
     //////////////////////////////////////////////////////////////////////
 
+    private GameObject root;
 	private Piece[] pieces;
 	private List<Word> foundWords = new List<Word>();
 	private List<Word> validWords = new List<Word>();
 
     //////////////////////////////////////////////////////////////////////
 
+    public Board()
+    {
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
+    public static Board Create()
+    {
+        return ScriptableObject.CreateInstance<Board>();
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
     public void Setup()
 	{
+        root = new GameObject("Board");
 		pieces = new Piece[Main.boardWidth * Main.boardHeight];
 		Letters.Seed(2);
 		int i = 0;
@@ -31,14 +45,14 @@ public class Board : MonoBehaviour
 			for(int x = 0; x < Main.boardWidth; ++x)
             {
                 Piece p = Piece.Create();
-                p.Position = new Vector2(x * 96, y * 96);
                 p.Sprite = Tiles.Get(0, 4);
                 p.Letter = Letters.GetRandomLetter();
-                p.transform.parent = this.transform;
+                p.Position = new Vector2(x * p.Width, y * p.Height);
+                p.transform.parent = root.transform;
 				pieces[i++] = p;
 			}
 		}
-        transform.position = new Vector3(48, 48, 0);
+        root.transform.position = new Vector3(48, 48, 0);
 	}
 
     //////////////////////////////////////////////////////////////////////
@@ -138,8 +152,18 @@ public class Board : MonoBehaviour
 
     //////////////////////////////////////////////////////////////////////
 
-    void Update()
+    public Transform transform
     {
-		this.transform.Translate(new Vector3(1, 0, 0));
+        get
+        {
+            return root.transform;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
+    public void Update()
+    {
+		root.transform.Translate(new Vector3(1, 0, 0));
 	}
 }

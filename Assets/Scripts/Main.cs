@@ -43,8 +43,7 @@ public class Main : MonoBehaviour
         piece2.Letter = 'Z';
         piece2.Position = new Vector2(600, 600);
 
-        GameObject boardPrefab = (GameObject)Resources.Load("Board");
-		board = ((GameObject)Instantiate(boardPrefab, Vector3.zero, Quaternion.identity)).GetComponent<Board>();
+        board = Board.Create();
 		board.Setup();
 		board.MarkAllWords();
 		
@@ -55,6 +54,7 @@ public class Main : MonoBehaviour
 
     void Update()
 	{
+        board.Update();
 		t.root.transform.rotation = Quaternion.identity;
 		t.root.transform.position = new Vector3 (100, 100);
 		t.root.transform.RotateAround (new Vector3 (200, 120, 0), Vector3.forward, Mathf.Sin(Time.realtimeSinceStartup * 2) * 90);

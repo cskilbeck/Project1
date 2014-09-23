@@ -199,7 +199,27 @@ class Piece : ScriptableObject
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
-    
+
+    ///////////////////////////////////////////////////////////////////
+
+    public float Width
+    {
+        get
+        {
+            return tile.textureRect.width;
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////
+
+    public float Height
+    {
+        get
+        {
+            return tile.textureRect.height;
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////
 
     public Transform transform
