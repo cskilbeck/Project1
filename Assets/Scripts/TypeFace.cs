@@ -63,7 +63,6 @@ namespace Font
 		public TypeFace (string name)
 		{
 			texture = (Texture2D)Resources.Load(name + "0");
-			texture.filterMode = FilterMode.Trilinear;
 
 			TextAsset t = (TextAsset)Resources.Load(name);				// load the json dat
 			SimpleJSON.JSONNode d = SimpleJSON.JSON.Parse(t.text);		// parse it
@@ -106,8 +105,8 @@ namespace Font
 					float y = inode["y"].AsInt;
 					float w = inode["w"].AsInt;
 					float h = inode["h"].AsInt;
-					images[k] = Sprite.Create(texture, new Rect(x, th-y, w, -h), new Vector2(0, 0), 1);
-					offs[k] = new Vector2(ox, -oy);
+					images[k] = Sprite.Create(texture, new Rect(x, th-y, w, -h), new Vector2(0, 1), 1);
+					offs[k] = new Vector2(ox, oy);
 				}
 				glyphs.Add((char)c, new GlyphDescriptor(imageCount, advance, images, offs));
 			}

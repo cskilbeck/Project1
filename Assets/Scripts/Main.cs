@@ -17,13 +17,21 @@ public class Main : MonoBehaviour
 	[HideInInspector]
 	public Board board;
 
-	[HideInInspector]
-	public TypeFace arialFont;
+    [HideInInspector]
+    public TypeFace arialFont;
+
+    [HideInInspector]
+    public TypeFace debugFont;
+
+    [HideInInspector]
+    public TypeFace calibriFont;
 
     //////////////////////////////////////////////////////////////////////
 
     Piece piece2;
 	Font.Text t;
+    Font.Text debugMessage;
+    Font.Text banner;
 
     //////////////////////////////////////////////////////////////////////
 
@@ -35,7 +43,9 @@ public class Main : MonoBehaviour
         Tiles.Create();
 		Dictionary.Init();
 
+        debugFont = new TypeFace("Fixedsys");
         arialFont = new TypeFace("Arial");
+        calibriFont = new TypeFace("Calibri");
         
         Piece.SetTypeFace(arialFont);
         piece2 = new Piece();
@@ -45,7 +55,14 @@ public class Main : MonoBehaviour
 
         board = new Board();
 		
-		t = new Font.Text (arialFont, "HELLO");
+		t = new Font.Text(arialFont, "HELLO");
+        t.transform.position = new Vector3(100, 100);
+
+        banner = new Font.Text(calibriFont, "ga");
+        banner.transform.position = new Vector3(100, 600, 0);
+
+        debugMessage = new Font.Text(debugFont, "Hello, World!");
+        debugMessage.transform.position = new UnityEngine.Vector3(100, 700);
 	}
 
     //////////////////////////////////////////////////////////////////////
@@ -53,10 +70,6 @@ public class Main : MonoBehaviour
     void Update()
 	{
         board.Update();
-		t.root.transform.rotation = Quaternion.identity;
-		t.root.transform.position = new Vector3 (100, 100);
-		t.root.transform.RotateAround (new Vector3 (200, 120, 0), Vector3.forward, Mathf.Sin(Time.realtimeSinceStartup * 2) * 90);
-
-        piece2.Rotation = Time.realtimeSinceStartup * 25 ;
+        piece2.Rotation = Time.realtimeSinceStartup * 25;
 	}
 }

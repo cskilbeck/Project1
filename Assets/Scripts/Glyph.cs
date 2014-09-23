@@ -20,7 +20,6 @@ namespace Font
         public Glyph(TypeFace font, char c)
         {
             TypeFace.GlyphDescriptor g;
-            c = Char.ToUpper(c);
             try
             {
                  g = font.glyphs[c];
@@ -31,24 +30,36 @@ namespace Font
                 g = font.glyphs['Z'];
             }
 
-            letter = new GameObject[g.imageCount];
             advance = g.advance;
-
             int ic = g.imageCount;
-
-            for (int i = 0; i < ic; ++i)
+            if (ic > 0)
             {
-                letter[i] = new GameObject("GlyphLayer" + i.ToString() + "(" + c.ToString() + ")");
-                letter[i].AddComponent<SpriteRenderer>();
-                letter[i].GetComponent<SpriteRenderer>().sprite = g.images[i];
-                if (i != 0)
+                letter = new GameObject[Math.Max(1, g.imageCount)];
+                for (int i = 0; i < ic; ++i)
                 {
-                    letter[i].transform.parent = letter[0].transform;
+                    GameObject l = new GameObject("GlyphLayer" + i.ToString() + "(" + c.ToString() + ")");
+                    letter[i] = l;
+                    SpriteRenderer sr = letter[i].AddComponent<SpriteRenderer>();
+                    sr.sprite = g.images[i];
+                    l.transform.localPosition = g.offsets[i];
+                    if (i != 0)
+                    {
+                        l.transform.parent = letter[0].transform;
+                    }
+                    sr.sortingOrder = (ic - i) + 20;
                 }
-                letter[i].transform.localPosition = g.offsets[i];
-                letter[i].GetComponent<SpriteRenderer>().sortingOrder = (ic - i) + 20;
+                letter[0].transform.localScale = new Vector2(1, -1);
             }
-            letter[0].transform.localScale = new Vector2(1, -1);
+        }
+
+        //////////////////////////////////////////////////////////////////////
+
+        public bool HasImage
+        {
+            get
+            {
+                return letter != null;
+            }
         }
 
         //////////////////////////////////////////////////////////////////////

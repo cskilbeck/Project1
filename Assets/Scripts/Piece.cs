@@ -170,7 +170,7 @@ class Piece
         set
         {
             letter = value;
-            glyph = new Glyph(typeFace, letter);
+            glyph = new Glyph(typeFace, Char.ToUpper(value));
             Vector3 d = glyph.letter[0].renderer.bounds.center;
             glyph.transform.position = new Vector3(-d.x, -d.y) + goTile.transform.position;
             glyph.transform.parent = goTile.transform;

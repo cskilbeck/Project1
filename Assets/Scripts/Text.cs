@@ -28,11 +28,23 @@ namespace Font
             for(int i = 0, l = s.Length; i < l; ++i)
 			{
                 char c = s[i];
+                TypeFace.GlyphDescriptor d = font.glyphs[c];
                 letters[i] = new Glyph(font, c);
-				letters[i].transform.position = new Vector2(x, 0);
+                if (letters[i].HasImage)
+                {
+                    letters[i].transform.localPosition = new Vector2(x, 0);
+                    letters[i].transform.parent = root.transform;
+                }
 				x += letters[i].advance;
-				letters[i].transform.parent = root.transform;
 			}
 		}
+
+        public Transform transform
+        {
+            get
+            {
+                return root.transform;
+            }
+        }
 	}
 }
