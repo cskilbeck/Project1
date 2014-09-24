@@ -6,15 +6,17 @@ using Font;
 
 //////////////////////////////////////////////////////////////////////
 
-class Piece
+class Piece : iMouseEnabled
 {
     //////////////////////////////////////////////////////////////////////
 
-    private GameObject goTile;
+    private GameObject root;
     private Sprite tile;
     private SpriteRenderer tileRenderer;
+    private BoxCollider2D collider;
+    private MouseDetector mouseDetector;
     private Glyph glyph;
-    private float angle = 0;
+    private float angle;
     private Vector2 position;
     private char letter;
 
@@ -79,12 +81,29 @@ class Piece
 
     public Piece()
     {
-        goTile = new GameObject("Piece");
-        goTile.AddComponent<SpriteRenderer>();
-        tileRenderer = goTile.GetComponent<SpriteRenderer>();
+        root = new GameObject("Piece");
+        tileRenderer = root.AddComponent<SpriteRenderer>();
+        collider = root.AddComponent<BoxCollider2D>();
+        mouseDetector = root.AddComponent<MouseDetector>();
+        mouseDetector.parent = this;
         tileRenderer.transform.localScale = new Vector3(1, -1, 1);
         wordDetails[Word.horizontal] = new WordDetails();
         wordDetails[Word.vertical] = new WordDetails();
+    }
+
+    public void OnMouseDown()
+    {
+        Debug.Log("Down!");
+    }
+
+    public void OnMouseUp()
+    {
+        Debug.Log("Up!");
+    }
+
+    public void OnMouseDrag()
+    {
+        Debug.Log("Drag!");
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
@@ -107,6 +126,11 @@ class Piece
     {
         wordDetails[w.orientation].Set(w, index);
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>
+    /// IsPartOf. is this piece a part of any word of a certain orientation?
+    /// </summary>
 
     public bool IsPartOf(int orientation)
     {
@@ -141,6 +165,8 @@ class Piece
         {
             tile = value;
             tileRenderer.sprite = tile;
+            collider.center = tile.bounds.center;
+            collider.size = tile.bounds.size;
         }
     }
 
@@ -169,12 +195,12 @@ class Piece
         }
         set
         {
-            letter = value;
-            glyph = new Glyph(typeFace, Char.ToUpper(value));
-            Vector3 d = glyph.letter[0].renderer.bounds.center;
-            glyph.transform.position = new Vector3(-d.x, -d.y) + goTile.transform.position;
-            glyph.transform.parent = goTile.transform;
-            goTile.name = "Piece(" + Char.ToUpper(value).ToString() + ")";
+            letter = Char.ToLower(value);
+            char u = Char.ToUpper(value);
+            glyph = new Glyph(typeFace, u);
+            glyph.transform.localPosition = -glyph.bounds.center;
+            glyph.transform.parent = root.transform;
+            root.name = "Piece:" + u;
         }
     }
 
@@ -219,7 +245,7 @@ class Piece
     {
         get
         {
-            return goTile.transform;
+            return root.transform;
         }
     }
 }

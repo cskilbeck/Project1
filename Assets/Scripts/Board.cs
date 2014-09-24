@@ -152,6 +152,6 @@ public class Board
 
     public void Update()
     {
-		root.transform.Translate(new Vector3(1, 0, 0));
+		//root.transform.Translate(new Vector3(1, 0, 0));
 	}
 }

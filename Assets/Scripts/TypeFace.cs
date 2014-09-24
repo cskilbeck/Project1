@@ -19,6 +19,7 @@ namespace Font
 		public float baseline;
 		public int layerCount;
 		public int glyphCount;
+        public char defaultChar;
 		public string name;
 		private Texture2D texture;
 
@@ -86,31 +87,36 @@ namespace Font
 
 			int glyphNodeCount = d["glyphs"].Count;						// get count of glyph nodes
 
-			for(int i = 0; i < glyphNodeCount; ++i)
-			{
-				SimpleJSON.JSONNode glyphNode = d["glyphs"][i];
-				int c = glyphNode["char"].AsInt;
-				int imageCount = glyphNode["imageCount"].AsInt;
-				float advance = glyphNode["advance"].AsFloat;
-				Sprite[] images = new Sprite[imageCount];
-				Vector2[] offs = new Vector2[imageCount];
-				float th = (float)texture.height;
-				for(int j = 0; j < imageCount; ++j)
-				{
-					int k = imageCount - 1 - j;
-					SimpleJSON.JSONNode inode = glyphNode["images"][j];
-					float ox = inode["offsetX"].AsFloat;
-					float oy = inode["offsetY"].AsFloat;
-					float x = inode["x"].AsInt;
-					float y = inode["y"].AsInt;
-					float w = inode["w"].AsInt;
-					float h = inode["h"].AsInt;
-                    Vector2 pivot = Vector2.zero;
-					images[k] = Sprite.Create(texture, new Rect(x, th-y-h, w, h), pivot, 1);
-					offs[k] = new Vector2(ox, oy);
-				}
-				glyphs.Add((char)c, new GlyphDescriptor(imageCount, advance, images, offs));
-			}
+            if (glyphNodeCount > 0)
+            {
+                Vector2 pivot = new Vector2(0, 0.5f);
+                SimpleJSON.JSONNode glyphNode = d["glyphs"][0];
+                defaultChar = (char)glyphNode["char"].AsInt;
+                for (int i = 0; i < glyphNodeCount; ++i)
+                {
+                    glyphNode = d["glyphs"][i];
+                    int c = glyphNode["char"].AsInt;
+                    int imageCount = glyphNode["imageCount"].AsInt;
+                    float advance = glyphNode["advance"].AsFloat;
+                    Sprite[] images = new Sprite[imageCount];
+                    Vector2[] offs = new Vector2[imageCount];
+                    float th = (float)texture.height;
+                    for (int j = 0; j < imageCount; ++j)
+                    {
+                        int k = imageCount - 1 - j;
+                        SimpleJSON.JSONNode inode = glyphNode["images"][j];
+                        float ox = inode["offsetX"].AsFloat;
+                        float oy = inode["offsetY"].AsFloat;
+                        float x = inode["x"].AsInt;
+                        float y = inode["y"].AsInt;
+                        float w = inode["w"].AsInt;
+                        float h = inode["h"].AsInt;
+                        images[k] = Sprite.Create(texture, new Rect(x, th - y - h, w, h), pivot, 1);
+                        offs[k] = new Vector2(ox, oy + h / 2);
+                    }
+                    glyphs.Add((char)c, new GlyphDescriptor(imageCount, advance, images, offs));
+                }
+            }
 		}
 	}
 }
