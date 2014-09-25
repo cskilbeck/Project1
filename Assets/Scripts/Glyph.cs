@@ -20,7 +20,7 @@ namespace Font
 
         public Glyph(TypeFace font, char c)
         {
-            root = new GameObject("Glyphy:" + c.ToString());
+            root = new GameObject("Glyph:" + c.ToString());
             TypeFace.GlyphDescriptor g;
             if (!font.glyphs.ContainsKey(c))
             {
@@ -48,6 +48,7 @@ namespace Font
         }
 
         //////////////////////////////////////////////////////////////////////
+        // Only measure the 1st layer
 
         public Bounds bounds
         {

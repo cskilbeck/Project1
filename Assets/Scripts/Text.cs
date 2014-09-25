@@ -26,27 +26,12 @@ namespace Font
 		{
             text = s;
             typeface = font;
-            Init();
+            Setup();
 		}
 
         //////////////////////////////////////////////////////////////////////
 
-        public string String
-        {
-            get
-            {
-                return text;
-            }
-            set
-            {
-                text = value;
-                Init();
-            }
-        }
-
-        //////////////////////////////////////////////////////////////////////
-
-        private void Init()
+        private void Setup()
         {
             string name = text;
             int sl = text.Length;
@@ -69,6 +54,21 @@ namespace Font
 
         //////////////////////////////////////////////////////////////////////
 
+        public string String
+        {
+            get
+            {
+                return text;
+            }
+            set
+            {
+                text = value;
+                Setup();
+            }
+        }
+
+        //////////////////////////////////////////////////////////////////////
+
         public TypeFace TypeFace
         {
             get
@@ -78,7 +78,7 @@ namespace Font
             set
             {
                 typeface = value;
-                Init();
+                Setup();
             }
         }
 

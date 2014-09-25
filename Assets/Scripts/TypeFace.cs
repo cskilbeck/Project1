@@ -90,11 +90,12 @@ namespace Font
             if (glyphNodeCount > 0)
             {
                 Vector2 pivot = new Vector2(0, 0.5f);
-                SimpleJSON.JSONNode glyphNode = d["glyphs"][0];
+                SimpleJSON.JSONArray glyphArray = d["glyphs"].AsArray;
+                SimpleJSON.JSONNode glyphNode = glyphArray[0];
                 defaultChar = (char)glyphNode["char"].AsInt;
                 for (int i = 0; i < glyphNodeCount; ++i)
                 {
-                    glyphNode = d["glyphs"][i];
+                    glyphNode = glyphArray[i];
                     int c = glyphNode["char"].AsInt;
                     int imageCount = glyphNode["imageCount"].AsInt;
                     float advance = glyphNode["advance"].AsFloat;

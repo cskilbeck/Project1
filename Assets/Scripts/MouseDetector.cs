@@ -26,5 +26,4 @@ class MouseDetector : MonoBehaviour
     {
         parent.OnMouseDrag();
     }
-
 }
