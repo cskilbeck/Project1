@@ -25,7 +25,7 @@ public class Board
 	{
         root = new GameObject("Board");
 		pieces = new Piece[Main.boardWidth * Main.boardHeight];
-		Letters.Seed(2);
+		Letters.Seed(56);
 		int i = 0;
 		for(int y = 0; y < Main.boardHeight; ++y)
         {

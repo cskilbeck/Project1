@@ -19,6 +19,7 @@ class Piece : iMouseEnabled
     private float angle;
     private Vector2 position;
     private char letter;
+    private Vector2 dragOffset;
 
     //////////////////////////////////////////////////////////////////////
 
@@ -91,19 +92,30 @@ class Piece : iMouseEnabled
         wordDetails[Word.vertical] = new WordDetails();
     }
 
+    //////////////////////////////////////////////////////////////////////
+
     public void OnMouseDown()
     {
-        Debug.Log("Down!");
+        Vector2 mousePos = Input.mousePosition;
+        mousePos.y = Screen.height - mousePos.y;
+        dragOffset = mousePos - Position;
+        transform.localScale = new Vector2(1.2f, -1.2f);
     }
+
+    //////////////////////////////////////////////////////////////////////
 
     public void OnMouseUp()
     {
-        Debug.Log("Up!");
+        transform.localScale = new Vector2(1, -1);
     }
+
+    //////////////////////////////////////////////////////////////////////
 
     public void OnMouseDrag()
     {
-        Debug.Log("Drag!");
+        Vector2 mousePos = Input.mousePosition;
+        mousePos.y = Screen.height - mousePos.y;
+        Position = mousePos - dragOffset;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
@@ -181,7 +193,7 @@ class Piece : iMouseEnabled
         set
         {
             position = value;
-            transform.position = value;
+            transform.localPosition = value;
         }
     }
 

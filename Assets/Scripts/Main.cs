@@ -26,6 +26,7 @@ public class Main : MonoBehaviour
 		Screen.SetResolution(1280, 720, false);
         Camera.main.projectionMatrix = Matrix4x4.Ortho(0, Screen.width, Screen.height, 0, 0, 100);
         Tiles.Create();
+        Letters.Seed(56);
 		Dictionary.Init();
         debugFont = new TypeFace("Fixedsys");
         arialFont = new TypeFace("Arial");
