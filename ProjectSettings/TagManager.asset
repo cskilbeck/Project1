@@ -14,8 +14,8 @@ TagManager:
   Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
-  User Layer 9: 
+  User Layer 8: Board
+  User Layer 9: DragPiece
   User Layer 10: 
   User Layer 11: 
   User Layer 12: 
@@ -42,4 +42,12 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Board
+    userID: 1
+    uniqueID: 3829882037
+    locked: 0
+  - name: DragPiece
+    userID: 2
+    uniqueID: 15950267
     locked: 0

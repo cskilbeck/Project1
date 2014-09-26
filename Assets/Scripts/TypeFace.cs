@@ -14,7 +14,8 @@ namespace Font
 	public class TypeFace
 	{
 		/////////////////////////////////////////////////////////////////////////////
-		
+
+        private int refCount;
 		public int height;
 		public float baseline;
 		public int layerCount;
@@ -59,10 +60,35 @@ namespace Font
 		public Layer[] layers;
 		public Dictionary<char, GlyphDescriptor> glyphs;
 
-		/////////////////////////////////////////////////////////////////////////////
-		
-		public TypeFace (string name)
+        /////////////////////////////////////////////////////////////////////////////
+
+        private static Dictionary<string, TypeFace> cache = new Dictionary<string, TypeFace>();
+
+        public static TypeFace Load(string name)
+        {
+            if (!cache.ContainsKey(name))
+            {
+                cache[name] = new TypeFace(name);
+            }
+            cache[name].refCount++;
+            return cache[name];
+        }
+
+        /////////////////////////////////////////////////////////////////////////////
+
+        public void Release()
+        {
+            if (--refCount == 0)
+            {
+                cache[name] = null; // allow it to be collected
+            }
+        }
+
+        /////////////////////////////////////////////////////////////////////////////
+
+        private TypeFace(string name)
 		{
+            refCount = 0;
 			texture = (Texture2D)Resources.Load(name + "0");
 
 			TextAsset t = (TextAsset)Resources.Load(name);				// load the json dat

@@ -94,12 +94,35 @@ class Piece : iMouseEnabled
 
     //////////////////////////////////////////////////////////////////////
 
+    public void SetSortingLayer(string name)
+    {
+        SetSortingLayerName(root.transform, name);
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
+    private static void SetSortingLayerName(Transform transform, string name)
+    {
+        SpriteRenderer sr = transform.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.sortingLayerName = name;
+        }
+        foreach (Transform t in transform)
+        {
+            SetSortingLayerName(t, name);
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
     public void OnMouseDown()
     {
         Vector2 mousePos = Input.mousePosition;
         mousePos.y = Screen.height - mousePos.y;
         dragOffset = mousePos - Position;
         transform.localScale = new Vector2(1.2f, -1.2f);
+        SetSortingLayer("DragPiece");
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -107,6 +130,7 @@ class Piece : iMouseEnabled
     public void OnMouseUp()
     {
         transform.localScale = new Vector2(1, -1);
+        SetSortingLayer("Board");
     }
 
     //////////////////////////////////////////////////////////////////////

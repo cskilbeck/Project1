@@ -28,9 +28,9 @@ public class Main : MonoBehaviour
         Tiles.Create();
         Letters.Seed(56);
 		Dictionary.Init();
-        debugFont = new TypeFace("Fixedsys");
-        arialFont = new TypeFace("Arial");
-        calibriFont = new TypeFace("Calibri");
+        debugFont = TypeFace.Load("Fixedsys");
+        arialFont = TypeFace.Load("Arial");
+        calibriFont = TypeFace.Load("Calibri");
         Piece.SetTypeFace(arialFont);
         piece2 = new Piece();
         piece2.Sprite = Tiles.Get(4, 2);
