@@ -80,7 +80,7 @@ public static class Dictionary
 
     public static int GetScore(string word)
 	{
-		return IsWord(word) ? words[word].score : -1;
+		return IsWord(word) ? GetWord(word).score : -1;
 	}
 
     //////////////////////////////////////////////////////////////////////
@@ -89,11 +89,11 @@ public static class Dictionary
 	{
 		if(IsWord(word))
 		{
-			return words[word].definition;
+			return GetWord(word).definition;
 		}
 		else
 		{
-			return null;
+			return "?";
 		}
 	}
 }

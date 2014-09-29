@@ -1,6 +1,7 @@
 ﻿//////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -58,6 +59,8 @@ public class Board
 	{
         int xLim = Main.boardWidth - 2 * xMul;
         int yLim = Main.boardHeight - 2 * yMul;
+
+        StringBuilder checkString = new StringBuilder(Main.boardWidth, Main.boardWidth);
 		
 		for (int y = 0; y < yLim; ++y)
 		{
@@ -68,21 +71,18 @@ public class Board
 
 				for (int e = 3; e + t <= limit; ++e)
 				{
-					string checkString = "";
+                    checkString.Length = 0;
 					int m = n;
 					int i = 0;
 					for (; i < e; ++i)
 					{
-						checkString += pieces[m].Letter;
+						checkString.Append(pieces[m].Letter);
 						m += offsetVector;
 					}
-					if(Dictionary.IsWord(checkString))
+                    string checkWord = checkString.ToString();
+                    if (Dictionary.IsWord(checkWord))
 					{
-						Word word = new Word(x, y, orientation, Dictionary.GetWord(checkString));
-						if(word != null)
-						{
-							foundWords.Add(word);
-						}
+						foundWords.Add(new Word(x, y, orientation, Dictionary.GetWord(checkWord)));
 					}
 				}
 			}
@@ -126,6 +126,7 @@ public class Board
             {
                 validWords.Add(w);
                 score += w.score;
+
                 for (int t = 0, tl = w.word.text.Length; t < tl; ++t)
                 {
                     GetWordPiece(w, t).SetWord(w, t);
