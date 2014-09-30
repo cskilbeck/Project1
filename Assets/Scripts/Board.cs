@@ -7,24 +7,25 @@ using System.Collections.Generic;
 
 //////////////////////////////////////////////////////////////////////
 
-public class Board
+public class Board : MonoBehaviour
 {
     //////////////////////////////////////////////////////////////////////
 
+    [HideInInspector]
     public int score;
 
     //////////////////////////////////////////////////////////////////////
 
-    private GameObject root;
 	private Piece[] pieces;
 	private List<Word> foundWords = new List<Word>();
-	private List<Word> validWords = new List<Word>();
+    private List<Word> validWords = new List<Word>();
+
+    private static StringBuilder checkString = new StringBuilder(Main.boardWidth, Main.boardWidth);
 
     //////////////////////////////////////////////////////////////////////
 
-    public Board()
+    public void Start()
 	{
-        root = new GameObject("Board");
 		pieces = new Piece[Main.boardWidth * Main.boardHeight];
 		Letters.Seed(56);
 		int i = 0;
@@ -32,15 +33,15 @@ public class Board
         {
 			for(int x = 0; x < Main.boardWidth; ++x)
             {
-                Piece p = new Piece();
+                Piece p = Util.Create<Piece>();
                 p.Sprite = Tiles.Get(0, 4);
                 p.Letter = Letters.GetRandomLetter();
                 p.Position = new Vector2(x * p.Width, y * p.Height);
-                p.transform.parent = root.transform;
+                p.transform.parent = transform;
 				pieces[i++] = p;
 			}
 		}
-        root.transform.position = new Vector3(48, 48, 0);
+        transform.position = new Vector3(48, 48, 0);
         MarkAllWords();
 	}
 
@@ -60,8 +61,6 @@ public class Board
         int xLim = Main.boardWidth - 2 * xMul;
         int yLim = Main.boardHeight - 2 * yMul;
 
-        StringBuilder checkString = new StringBuilder(Main.boardWidth, Main.boardWidth);
-		
 		for (int y = 0; y < yLim; ++y)
 		{
 			for (int x = 0; x < xLim; ++x)
@@ -138,16 +137,6 @@ public class Board
 			pieces[i].SetupTile();
 		}
 	}
-
-    //////////////////////////////////////////////////////////////////////
-
-    public Transform transform
-    {
-        get
-        {
-            return root.transform;
-        }
-    }
 
     //////////////////////////////////////////////////////////////////////
 

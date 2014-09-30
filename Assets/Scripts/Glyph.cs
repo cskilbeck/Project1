@@ -10,22 +10,30 @@ namespace Font
 {
 	/////////////////////////////////////////////////////////////////////////////
 	
-	public class Glyph
+	public class Glyph : MonoBehaviour
 	{
-        public GameObject root;
 		public GameObject[] letter;
 		public float advance;
 
         //////////////////////////////////////////////////////////////////////
 
-        public Glyph(TypeFace font, char c)
+        public static Glyph Create(TypeFace font, char c)
         {
-            root = new GameObject("Glyph:" + c.ToString());
+            Glyph g = Util.Create<Glyph>();
+            g.Init(font, c);
+            return g;
+        }
+
+        //////////////////////////////////////////////////////////////////////
+
+        private void Init(TypeFace font, char c)
+        {
             TypeFace.GlyphDescriptor g;
             if (!font.glyphs.ContainsKey(c))
             {
                 c = font.defaultChar;
             }
+            name = "Glyph " + c;
             g = font.glyphs[c];
             advance = g.advance;
             int ic = g.imageCount;
@@ -40,7 +48,7 @@ namespace Font
                     Vector2 off = g.offsets[i];
                     l.transform.localPosition = off;
                     l.transform.localScale = new Vector2(1, -1);
-                    l.transform.parent = root.transform;
+                    l.transform.parent = transform;
                     sr.sortingOrder = (ic - i) + 20;
                     letter[i] = l;
                 }
@@ -67,16 +75,5 @@ namespace Font
                 return letter != null;
             }
         }
-
-        //////////////////////////////////////////////////////////////////////
-
-        public Transform transform
-		{
-			get
-			{
-				return root.transform;
-			}
-		}
 	}
-
 }

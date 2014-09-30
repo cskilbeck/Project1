@@ -6,15 +6,13 @@ using Font;
 
 //////////////////////////////////////////////////////////////////////
 
-class Piece : iMouseEnabled
+class Piece : MonoBehaviour
 {
     //////////////////////////////////////////////////////////////////////
 
-    private GameObject root;
     private Sprite tile;
     private SpriteRenderer tileRenderer;
-    private BoxCollider2D collider;
-    private MouseDetector mouseDetector;
+    private BoxCollider2D boxCollider;
     private Glyph glyph;
     private float angle;
     private Vector2 position;
@@ -80,14 +78,11 @@ class Piece : iMouseEnabled
 
     //////////////////////////////////////////////////////////////////////
 
-    public Piece()
+    public void Awake()
     {
-        root = new GameObject("Piece");
-        tileRenderer = root.AddComponent<SpriteRenderer>();
-        collider = root.AddComponent<BoxCollider2D>();
-        mouseDetector = root.AddComponent<MouseDetector>();
-        mouseDetector.parent = this;
+        tileRenderer = gameObject.AddComponent<SpriteRenderer>();
         tileRenderer.transform.localScale = new Vector3(1, -1, 1);
+        boxCollider = gameObject.AddComponent<BoxCollider2D>();
         wordDetails[Word.horizontal] = new WordDetails();
         wordDetails[Word.vertical] = new WordDetails();
     }
@@ -96,7 +91,7 @@ class Piece : iMouseEnabled
 
     public void SetSortingLayer(string name)
     {
-        SetSortingLayerName(root.transform, name);
+        SetSortingLayerName(transform, name);
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -201,8 +196,8 @@ class Piece : iMouseEnabled
         {
             tile = value;
             tileRenderer.sprite = tile;
-            collider.center = tile.bounds.center;
-            collider.size = tile.bounds.size;
+            boxCollider.center = tile.bounds.center;
+            boxCollider.size = tile.bounds.size;
         }
     }
 
@@ -233,10 +228,10 @@ class Piece : iMouseEnabled
         {
             letter = Char.ToLower(value);
             char u = Char.ToUpper(value);
-            glyph = new Glyph(typeFace, u);
+            glyph = Font.Glyph.Create(typeFace, u);
             glyph.transform.localPosition = -glyph.bounds.center;
-            glyph.transform.parent = root.transform;
-            root.name = "Piece:" + u;
+            glyph.transform.parent = transform;
+            name = "Piece:" + u;
         }
     }
 
@@ -272,16 +267,6 @@ class Piece : iMouseEnabled
         get
         {
             return tile.textureRect.height;
-        }
-    }
-
-    ///////////////////////////////////////////////////////////////////
-
-    public Transform transform
-    {
-        get
-        {
-            return root.transform;
         }
     }
 }
