@@ -8,28 +8,6 @@ using Font;
 
 class Piece : MonoBehaviour
 {
-    //////////////////////////////////////////////////////////////////////
-
-    private Sprite tile;
-    private SpriteRenderer tileRenderer;
-    private BoxCollider2D boxCollider;
-    private Glyph glyph;
-    private float angle;
-    private Vector2 position;
-    private char letter;
-    private Vector2 dragOffset;
-
-    //////////////////////////////////////////////////////////////////////
-
-    private static TypeFace typeFace;
-
-    //////////////////////////////////////////////////////////////////////
-
-    public static void SetTypeFace(TypeFace face)
-    {
-        typeFace = face;
-    }
-
     ////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
     /// WordPosition. Where in a word is this tile. These numbers are used to index into the atlas
@@ -69,12 +47,31 @@ class Piece : MonoBehaviour
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>
-    /// WordDetails for horizontal and vertical word membership
-    /// </summary>
+    //////////////////////////////////////////////////////////////////////
 
     public WordDetails[] wordDetails = new WordDetails[2];
+
+    //////////////////////////////////////////////////////////////////////
+
+    Sprite tile;
+    SpriteRenderer tileRenderer;
+    BoxCollider2D boxCollider;
+    Glyph glyph;
+    float angle;
+    Vector2 position;
+    char letter;
+    Vector2 dragOffset;
+
+    //////////////////////////////////////////////////////////////////////
+
+    static TypeFace typeFace;
+
+    //////////////////////////////////////////////////////////////////////
+
+    public static void SetTypeFace(TypeFace face)
+    {
+        typeFace = face;
+    }
 
     //////////////////////////////////////////////////////////////////////
 
@@ -138,9 +135,6 @@ class Piece : MonoBehaviour
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>
-    /// ResetWords. Clear out horiz, vert word details
-    /// </summary>
 
     public void ResetWords()
     {
@@ -149,9 +143,6 @@ class Piece : MonoBehaviour
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>
-    /// SetWord. Assign this tile to a word
-    /// </summary>
 
     public void SetWord(Word w, int index)
     {
@@ -159,9 +150,6 @@ class Piece : MonoBehaviour
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>
-    /// IsPartOf. is this piece a part of any word of a certain orientation?
-    /// </summary>
 
     public bool IsPartOf(int orientation)
     {
@@ -169,9 +157,6 @@ class Piece : MonoBehaviour
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>
-    /// SetTile. Change the tile background based on the word membership
-    /// </summary>
 
     public void SetupTile()
     {

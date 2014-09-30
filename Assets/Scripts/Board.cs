@@ -11,7 +11,6 @@ public class Board : MonoBehaviour
 {
     //////////////////////////////////////////////////////////////////////
 
-    [HideInInspector]
     public int score;
 
     //////////////////////////////////////////////////////////////////////
@@ -26,7 +25,8 @@ public class Board : MonoBehaviour
 
     public void Start()
 	{
-		pieces = new Piece[Main.boardWidth * Main.boardHeight];
+        Debug.Log("Board: Start");
+        pieces = new Piece[Main.boardWidth * Main.boardHeight];
 		Letters.Seed(56);
 		int i = 0;
 		for(int y = 0; y < Main.boardHeight; ++y)
@@ -43,7 +43,8 @@ public class Board : MonoBehaviour
 		}
         transform.position = new Vector3(48, 48, 0);
         MarkAllWords();
-	}
+        Debug.Log("Board: Start ends...");
+    }
 
     //////////////////////////////////////////////////////////////////////
 

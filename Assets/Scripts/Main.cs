@@ -12,18 +12,19 @@ public class Main : MonoBehaviour
     
 	Board board;
     Piece piece2;
-    Font.TypeFace arialFont;
-    Font.TypeFace debugFont;
-    Font.TypeFace calibriFont;
-	Font.Text helloText;
-    Font.Text debugMessage;
-    Font.Text banner;
+    TypeFace arialFont;
+    TypeFace debugFont;
+    TypeFace calibriFont;
+	Text helloText;
+    Text debugMessage;
+    Text banner;
 
     //////////////////////////////////////////////////////////////////////
 
     void Start()
 	{
-		Screen.SetResolution(1280, 720, false);
+        Debug.Log("Main: Start");
+        Screen.SetResolution(1280, 720, false);
         Camera.main.projectionMatrix = Matrix4x4.Ortho(0, Screen.width, Screen.height, 0, 0, 100);
         Tiles.Create();
         Letters.Seed(56);
@@ -37,12 +38,12 @@ public class Main : MonoBehaviour
         piece2.Sprite = Tiles.Get(4, 2);
         piece2.Letter = 'Z';
         piece2.Position = new Vector2(500, 540);
-		helloText = Font.Text.Create(arialFont, "HELLOWORLD");
+		helloText = Text.Create(arialFont, "HELLOWORLD");
         helloText.transform.position = new Vector3(800, 650);
-        banner = Font.Text.Create(calibriFont, "This is a piece of text which should, ultimately, be correctly rendered.... BUT IS IT? That's the questioning bit...");
+        banner = Text.Create(calibriFont, "This is a piece of text which should, ultimately, be correctly rendered.... BUT IS IT? That's the questioning bit...");
         banner.transform.position = new Vector3(100, 600, 0);
-        debugMessage = Font.Text.Create(debugFont, "Hello, World!");
-        debugMessage.transform.position = new UnityEngine.Vector3(100, 700);
+        debugMessage = Text.Create(debugFont, "Hello, World!");
+        debugMessage.transform.position = new Vector3(100, 700);
 	}
 
     //////////////////////////////////////////////////////////////////////
