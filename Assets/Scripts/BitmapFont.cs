@@ -38,7 +38,6 @@ namespace Text
 
     public class Connection
     {
-        [XmlElement("Connection")]
     }
 
     public class ConnectionList
