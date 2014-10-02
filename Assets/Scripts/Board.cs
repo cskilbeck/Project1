@@ -12,10 +12,11 @@ public class Board : MonoBehaviour
     //////////////////////////////////////////////////////////////////////
 
     public int score;
+    public Tile activeTile;
 
     //////////////////////////////////////////////////////////////////////
 
-	private Piece[] pieces;
+	private Tile[] pieces;
 	private List<Word> foundWords = new List<Word>();
     private List<Word> validWords = new List<Word>();
 
@@ -26,14 +27,16 @@ public class Board : MonoBehaviour
     public void Start()
 	{
         Debug.Log("Board: Start");
-        pieces = new Piece[Main.boardWidth * Main.boardHeight];
+        pieces = new Tile[Main.boardWidth * Main.boardHeight];
 		Letters.Seed(56);
 		int i = 0;
 		for(int y = 0; y < Main.boardHeight; ++y)
         {
 			for(int x = 0; x < Main.boardWidth; ++x)
             {
-                Piece p = Util.Create<Piece>();
+                Tile p = Util.Create<Tile>();
+                p.Board = this;
+                p.boardPosition = new Point(x, y);
                 p.Sprite = Tiles.Get(0, 4);
                 p.Letter = Letters.GetRandomLetter();
                 p.Position = new Vector2(x * p.Width, y * p.Height);
@@ -48,7 +51,7 @@ public class Board : MonoBehaviour
 
     //////////////////////////////////////////////////////////////////////
 
-    private Piece GetWordPiece(Word w, int index)
+    private Tile GetWordPiece(Word w, int index)
 	{
 		int yo = (int)w.orientation;
 		int xo = 1 - yo;
@@ -114,7 +117,7 @@ public class Board : MonoBehaviour
             isValid = true;
             for (int t = 0, tl = w.word.text.Length; t < tl; ++t)
             {
-                Piece p = GetWordPiece(w, t);
+                Tile p = GetWordPiece(w, t);
                 if (p.IsPartOf(Word.vertical) && w.orientation == Word.vertical ||
                     p.IsPartOf(Word.horizontal) && w.orientation == Word.horizontal)
                 {

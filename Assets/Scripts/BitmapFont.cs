@@ -6,7 +6,7 @@ using UnityEngine;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Text
+namespace TextThings
 {
     public class Parameter
     {

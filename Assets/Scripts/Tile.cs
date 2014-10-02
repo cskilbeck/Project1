@@ -2,11 +2,11 @@
 
 using System;
 using UnityEngine;
-using Font;
+using UI;
 
 //////////////////////////////////////////////////////////////////////
 
-class Piece : MonoBehaviour
+public class Tile : MonoBehaviour
 {
     ////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
@@ -50,10 +50,24 @@ class Piece : MonoBehaviour
     //////////////////////////////////////////////////////////////////////
 
     public WordDetails[] wordDetails = new WordDetails[2];
+    public bool swapped;
+    public Vector2 org;
+    public Vector2 target;
+    public Vector2 source;
+    public float moveStartTime; // when the lerp started
+    public float moveEndTime;      // how long the lerp should take
+    public bool moving;
+    public Point boardPosition;
+
+    public delegate void OnMoveCompleteDelegate(Tile t);
+    public event OnMoveCompleteDelegate OnMoveComplete;
 
     //////////////////////////////////////////////////////////////////////
 
-    Sprite tile;
+    public Board board;
+    bool selected;
+    Sprite tile;                // when it's not selected
+    Sprite currentTile;         // whatever is currently being shown
     SpriteRenderer tileRenderer;
     BoxCollider2D boxCollider;
     Glyph glyph;
@@ -86,6 +100,58 @@ class Piece : MonoBehaviour
 
     //////////////////////////////////////////////////////////////////////
 
+    public Board Board
+    {
+        get
+        {
+            return board;
+        }
+        set
+        {
+            board = value;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
+    void Update()
+    {
+        if (moving)
+        {
+            if (moveEndTime < Time.realtimeSinceStartup)
+            {
+                float delta = Util.Ease(Time.realtimeSinceStartup - moveStartTime / moveEndTime - moveStartTime);
+                position = Util.Lerp(source, target, delta);
+            }
+            else
+            {
+                position = target;
+                moving = false;
+                if (OnMoveComplete != null)
+                {
+                    OnMoveComplete(this);
+                }
+            }
+        }
+        if (selected)
+        {
+            transform.localRotation = Quaternion.AngleAxis(Mathf.Sin(Time.realtimeSinceStartup * 32) * 8, Vector3.forward);
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
+    public void SetTarget(Vector2 target, float time)
+    {
+        moving = true;
+        moveStartTime = Time.realtimeSinceStartup;
+        moveEndTime = moveStartTime + time;
+        source = org;
+        this.target = target;
+   }
+
+    //////////////////////////////////////////////////////////////////////
+
     public void SetSortingLayer(string name)
     {
         SetSortingLayerName(transform, name);
@@ -108,30 +174,58 @@ class Piece : MonoBehaviour
 
     //////////////////////////////////////////////////////////////////////
 
+    public bool Selected
+    {
+
+        get 
+        {
+            return selected;
+        }
+        set
+        {
+            selected = value;
+            float scale = selected ? 1.25f : 1.0f;
+            transform.localScale = new Vector2(scale, -scale);
+            SetSortingLayer(selected ? "DragPiece" : "Board");
+            Sprite = selected ? Tiles.Get(4, 4) : tile;
+            if (!selected)
+            {
+                transform.localRotation = Quaternion.identity;
+            }
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
     public void OnMouseDown()
     {
-        Vector2 mousePos = Input.mousePosition;
-        mousePos.y = Screen.height - mousePos.y;
-        dragOffset = mousePos - Position;
-        transform.localScale = new Vector2(1.2f, -1.2f);
-        SetSortingLayer("DragPiece");
+        if (board != null)
+        {
+            //Vector2 mousePos = Input.mousePosition;
+            //mousePos.y = Screen.height - mousePos.y;
+            //dragOffset = mousePos - Position;
+            if (Main.board.activeTile != null)
+            {
+                Main.board.activeTile.Selected = false;
+            }
+            Selected = true;
+            Main.board.activeTile = this;
+        }
     }
 
     //////////////////////////////////////////////////////////////////////
 
     public void OnMouseUp()
     {
-        transform.localScale = new Vector2(1, -1);
-        SetSortingLayer("Board");
     }
 
     //////////////////////////////////////////////////////////////////////
 
     public void OnMouseDrag()
     {
-        Vector2 mousePos = Input.mousePosition;
-        mousePos.y = Screen.height - mousePos.y;
-        Position = mousePos - dragOffset;
+        //Vector2 mousePos = Input.mousePosition;
+        //mousePos.y = Screen.height - mousePos.y;
+        //Position = mousePos - dragOffset;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
@@ -166,7 +260,8 @@ class Piece : MonoBehaviour
         {
             v = 4;
         }
-        this.Sprite = Tiles.Get(u, v);
+        tile = Tiles.Get(u, v);
+        Sprite = tile;
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -175,29 +270,14 @@ class Piece : MonoBehaviour
     {
         get
         {
-            return tile;
+            return currentTile;
         }
         set
         {
-            tile = value;
-            tileRenderer.sprite = tile;
-            boxCollider.center = tile.bounds.center;
-            boxCollider.size = tile.bounds.size;
-        }
-    }
-
-    ///////////////////////////////////////////////////////////////////
-
-    public Vector2 Position
-    {
-        get
-        {
-            return position;
-        }
-        set
-        {
-            position = value;
-            transform.localPosition = value;
+            currentTile = value;
+            tileRenderer.sprite = currentTile;
+            boxCollider.center = currentTile.bounds.center;
+            boxCollider.size = currentTile.bounds.size;
         }
     }
 
@@ -213,10 +293,25 @@ class Piece : MonoBehaviour
         {
             letter = Char.ToLower(value);
             char u = Char.ToUpper(value);
-            glyph = Font.Glyph.Create(typeFace, u);
+            glyph = UI.Glyph.Create(typeFace, u);
             glyph.transform.localPosition = -glyph.bounds.center;
             glyph.transform.parent = transform;
             name = "Piece:" + u;
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////
+
+    public Vector2 Position
+    {
+        get
+        {
+            return position;
+        }
+        set
+        {
+            position = value;
+            transform.localPosition = value;
         }
     }
 
@@ -241,7 +336,7 @@ class Piece : MonoBehaviour
     {
         get
         {
-            return tile.textureRect.width;
+            return currentTile.textureRect.width;
         }
     }
 
@@ -251,7 +346,7 @@ class Piece : MonoBehaviour
     {
         get
         {
-            return tile.textureRect.height;
+            return currentTile.textureRect.height;
         }
     }
 }

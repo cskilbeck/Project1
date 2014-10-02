@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
-using Font;
+using UI;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -10,14 +10,15 @@ public class Main : MonoBehaviour
     public static int boardWidth = 7;
 	public static int boardHeight = 5;
     
-	Board board;
-    Piece piece2;
+	public static Board board;
+
+    Tile piece2;
     TypeFace arialFont;
     TypeFace debugFont;
     TypeFace calibriFont;
-	Text helloText;
-    Text debugMessage;
-    Text banner;
+	Label helloText;
+    Label debugMessage;
+    Label banner;
 
     //////////////////////////////////////////////////////////////////////
 
@@ -33,16 +34,16 @@ public class Main : MonoBehaviour
         debugFont = TypeFace.Load("Fixedsys");
         arialFont = TypeFace.Load("Arial");
         calibriFont = TypeFace.Load("Calibri");
-        Piece.SetTypeFace(arialFont);
-        piece2 = Util.Create<Piece>();
+        Tile.SetTypeFace(arialFont);
+        piece2 = Util.Create<Tile>();
         piece2.Sprite = Tiles.Get(4, 2);
         piece2.Letter = 'Z';
         piece2.Position = new Vector2(500, 540);
-		helloText = Text.Create(arialFont, "HELLOWORLD");
+		helloText = Label.Create(arialFont, "HELLOWORLD");
         helloText.transform.position = new Vector3(800, 650);
-        banner = Text.Create(calibriFont, "This is a piece of text which should, ultimately, be correctly rendered.... BUT IS IT? That's the questioning bit...");
+        banner = Label.Create(calibriFont, "This is a piece of text which should, ultimately, be correctly rendered.... BUT IS IT? That's the questioning bit...");
         banner.transform.position = new Vector3(100, 600, 0);
-        debugMessage = Text.Create(debugFont, "Hello, World!");
+        debugMessage = Label.Create(debugFont, "Hello, World!");
         debugMessage.transform.position = new Vector3(100, 700);
 	}
 

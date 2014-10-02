@@ -7,11 +7,11 @@ using SimpleJSON;
 
 /////////////////////////////////////////////////////////////////////////////
 
-namespace Font
+namespace UI
 {
 	/////////////////////////////////////////////////////////////////////////////
 	
-	public class Text : MonoBehaviour
+	public class Label : MonoBehaviour
 	{
         //////////////////////////////////////////////////////////////////////
 
@@ -21,9 +21,9 @@ namespace Font
 
         //////////////////////////////////////////////////////////////////////
 
-        public static Text Create(TypeFace face, string txt)
+        public static Label Create(TypeFace face, string txt)
         {
-            Text t = Util.Create<Text>();
+            Label t = Util.Create<Label>();
             t.TypeFace = face;
             t.String = txt;
             return t;
@@ -45,7 +45,7 @@ namespace Font
                 float x = 0;
                 for (int i = 0, l = text.Length; i < l; ++i)
                 {
-                    Glyph g = Font.Glyph.Create(typeface, text[i]);
+                    Glyph g = UI.Glyph.Create(typeface, text[i]);
                     g.transform.localPosition = new Vector2(x, 0);
                     g.transform.parent = transform;
                     letters[i] = g;
