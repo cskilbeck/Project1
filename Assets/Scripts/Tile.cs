@@ -21,6 +21,12 @@ public class Tile : MonoBehaviour
         End = 3
     }
 
+    public enum State : int
+    {
+        Idle = 0,
+        Moving = 1
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
     /// WordDetails. Details about a word this Piece might be a part of
@@ -56,7 +62,7 @@ public class Tile : MonoBehaviour
     public Vector2 source;
     public float moveStartTime; // when the lerp started
     public float moveEndTime;      // how long the lerp should take
-    public bool moving;
+    public State state;
     public Point boardPosition;
 
     public delegate void OnMoveCompleteDelegate(Tile t);
@@ -64,7 +70,7 @@ public class Tile : MonoBehaviour
 
     //////////////////////////////////////////////////////////////////////
 
-    public Board board;
+    Board board;
     bool selected;
     Sprite tile;                // when it's not selected
     Sprite currentTile;         // whatever is currently being shown
@@ -74,7 +80,6 @@ public class Tile : MonoBehaviour
     float angle;
     Vector2 position;
     char letter;
-    Vector2 dragOffset;
 
     //////////////////////////////////////////////////////////////////////
 
@@ -116,22 +121,26 @@ public class Tile : MonoBehaviour
 
     void Update()
     {
-        if (moving)
+        switch(state)
         {
-            if (moveEndTime < Time.realtimeSinceStartup)
-            {
-                float delta = Util.Ease(Time.realtimeSinceStartup - moveStartTime / moveEndTime - moveStartTime);
-                position = Util.Lerp(source, target, delta);
-            }
-            else
-            {
-                position = target;
-                moving = false;
-                if (OnMoveComplete != null)
+            case State.Idle:
+                break;
+            case State.Moving:
+                if (moveEndTime < Time.realtimeSinceStartup)
                 {
-                    OnMoveComplete(this);
+                    float delta = Util.Ease((Time.realtimeSinceStartup - moveStartTime) / (moveEndTime - moveStartTime));
+                    position = Util.Lerp(source, target, delta);
                 }
-            }
+                else
+                {
+                    position = target;
+                    state = State.Idle;
+                    if (OnMoveComplete != null)
+                    {
+                        OnMoveComplete(this);   // tell whoever cares that we got there...
+                    }
+                }
+                break;
         }
         if (selected)
         {
@@ -143,7 +152,7 @@ public class Tile : MonoBehaviour
 
     public void SetTarget(Vector2 target, float time)
     {
-        moving = true;
+        state = State.Moving;
         moveStartTime = Time.realtimeSinceStartup;
         moveEndTime = moveStartTime + time;
         source = org;
@@ -152,9 +161,30 @@ public class Tile : MonoBehaviour
 
     //////////////////////////////////////////////////////////////////////
 
-    public void SetSortingLayer(string name)
+    private struct Layer
     {
-        SetSortingLayerName(transform, name);
+        public string sortingLayerName;
+        public float zValue;
+    }
+
+    private static Layer[] layers = new Layer[]
+    {
+        new Layer() { sortingLayerName = "Board", zValue = 0.0f },
+        new Layer() { sortingLayerName = "DragPiece", zValue = -0.1f }
+    };
+
+    public enum SortingLayer : int
+    {
+        Board = 0,
+        Dragging = 1
+    }
+
+    public void SetSortingLayer(SortingLayer layer)
+    {
+        SetSortingLayerName(transform, layers[(int)layer].sortingLayerName);
+        Vector3 pos = transform.localPosition;
+        pos.z = layers[(int)layer].zValue;
+        transform.localPosition = pos;
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -186,7 +216,7 @@ public class Tile : MonoBehaviour
             selected = value;
             float scale = selected ? 1.25f : 1.0f;
             transform.localScale = new Vector2(scale, -scale);
-            SetSortingLayer(selected ? "DragPiece" : "Board");
+            SetSortingLayer(selected ? SortingLayer.Dragging : SortingLayer.Board);
             Sprite = selected ? Tiles.Get(4, 4) : tile;
             if (!selected)
             {
@@ -204,12 +234,28 @@ public class Tile : MonoBehaviour
             //Vector2 mousePos = Input.mousePosition;
             //mousePos.y = Screen.height - mousePos.y;
             //dragOffset = mousePos - Position;
-            if (Main.board.activeTile != null)
+            if (Selected)
             {
-                Main.board.activeTile.Selected = false;
+                Main.board.activeTile = null;
+                Selected = false;
             }
-            Selected = true;
-            Main.board.activeTile = this;
+            else
+            {
+                if (Main.board.activeTile != null)
+                {
+                    Main.board.activeTile.Selected = false;
+                    SwapLetters(Main.board.activeTile);
+                    SetSortingLayer(SortingLayer.Board);
+                    Main.board.activeTile.SetSortingLayer(SortingLayer.Board);
+                    Main.board.MarkAllWords();
+                    Main.board.activeTile = null;
+                }
+                else
+                {
+                    Selected = true;
+                    Main.board.activeTile = this;
+                }
+            }
         }
     }
 
@@ -279,6 +325,26 @@ public class Tile : MonoBehaviour
             boxCollider.center = currentTile.bounds.center;
             boxCollider.size = currentTile.bounds.size;
         }
+    }
+
+    ///////////////////////////////////////////////////////////////////
+
+    private void SetGlyph(Glyph g)
+    {
+        Util.SetParent(g.transform, transform);
+        glyph = g;
+    }
+
+    private void SwapLetters(Tile other)
+    {
+        char otherLetter = other.letter;
+        Glyph otherGlyph = other.glyph;
+        other.SetGlyph(glyph);
+        SetGlyph(otherGlyph);
+        other.letter = letter;
+        letter = otherLetter;
+        other.name = "Piece! >>" + Char.ToUpper(other.letter);
+        name = "Piece: >>" + Char.ToUpper(letter);
     }
 
     ///////////////////////////////////////////////////////////////////

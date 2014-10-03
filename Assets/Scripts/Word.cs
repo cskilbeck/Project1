@@ -19,17 +19,19 @@ public class Word : IComparable
 	public int y;
 	public int orientation;
 	public Dictionary.Word word;
+    public int sortIndex;
 
     //////////////////////////////////////////////////////////////////////
 
     public int CompareTo(Object o)
 	{
 		Word b = o as Word;
-		return (score < b.score) ? 1 :
-				(score > b.score) ? -1 : 
-				(length < b.length) ? 1 :
-				(length > b.length) ? -1 :
-				(word.text.Length - b.word.text.Length);
+        return (score < b.score) ? 1 :
+                (score > b.score) ? -1 :
+                (length < b.length) ? 1 :
+                (length > b.length) ? -1 :
+                (word.text.Length < b.word.text.Length) ? 1 :
+                (sortIndex < b.sortIndex) ? -1 : 1;
 	}
 
     //////////////////////////////////////////////////////////////////////

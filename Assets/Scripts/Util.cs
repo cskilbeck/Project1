@@ -32,4 +32,17 @@ public static class Util
         Vector2 c = b - a;
         return a + c * lerp;
     }
+
+    //////////////////////////////////////////////////////////////////////
+
+    public static void SetParent(Transform child, Transform parent)
+    {
+        Vector3 pos = child.localPosition;
+        Quaternion rot = child.localRotation;
+        Vector3 scale = child.localScale;
+        child.parent = parent;
+        child.localScale = scale;
+        child.localPosition = pos;
+        child.localRotation = rot;
+    }
 }

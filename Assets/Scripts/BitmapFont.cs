@@ -6,6 +6,8 @@ using UnityEngine;
 using System.Xml;
 using System.Xml.Serialization;
 
+#if KJHEDFKJHSDEFKJHSDKJFHSDKJHFKSDHJ
+
 namespace TextThings
 {
     public class Parameter
@@ -83,3 +85,5 @@ namespace TextThings
         GlyphList glyphs;
     }
 }
+
+#endif

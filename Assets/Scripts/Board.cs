@@ -26,7 +26,6 @@ public class Board : MonoBehaviour
 
     public void Start()
 	{
-        Debug.Log("Board: Start");
         pieces = new Tile[Main.boardWidth * Main.boardHeight];
 		Letters.Seed(56);
 		int i = 0;
@@ -46,7 +45,6 @@ public class Board : MonoBehaviour
 		}
         transform.position = new Vector3(48, 48, 0);
         MarkAllWords();
-        Debug.Log("Board: Start ends...");
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -106,6 +104,11 @@ public class Board : MonoBehaviour
 
         MarkWordPass(Word.horizontal, 1, Main.boardWidth, 1, 0);
         MarkWordPass(Word.vertical, Main.boardWidth, Main.boardHeight, 0, 1);
+
+        for (int i = 0, l = foundWords.Count; i < l; ++i)
+        {
+            foundWords[i].sortIndex = i;
+        }
 
 		foundWords.Sort();
 		
