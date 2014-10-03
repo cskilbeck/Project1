@@ -35,7 +35,7 @@ public static class Util
 
     //////////////////////////////////////////////////////////////////////
 
-    public static void SetParent(Transform child, Transform parent)
+    public static void SetParent(this Transform child, Transform parent)
     {
         Vector3 pos = child.localPosition;
         Quaternion rot = child.localRotation;

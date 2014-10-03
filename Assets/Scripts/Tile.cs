@@ -331,7 +331,7 @@ public class Tile : MonoBehaviour
 
     private void SetGlyph(Glyph g)
     {
-        Util.SetParent(g.transform, transform);
+        g.transform.SetParent(transform);
         glyph = g;
     }
 

@@ -27,7 +27,7 @@ public class Board : MonoBehaviour
     public void Start()
 	{
         pieces = new Tile[Main.boardWidth * Main.boardHeight];
-		Letters.Seed(56);
+		Letters.Seed(3);
 		int i = 0;
 		for(int y = 0; y < Main.boardHeight; ++y)
         {
@@ -105,6 +105,7 @@ public class Board : MonoBehaviour
         MarkWordPass(Word.horizontal, 1, Main.boardWidth, 1, 0);
         MarkWordPass(Word.vertical, Main.boardWidth, Main.boardHeight, 0, 1);
 
+        // unstable sort needs an index for comparison to make it stable
         for (int i = 0, l = foundWords.Count; i < l; ++i)
         {
             foundWords[i].sortIndex = i;
