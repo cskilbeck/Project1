@@ -17,7 +17,8 @@ namespace UI
 
         private TypeFace typeface;
 		public Glyph[] letters;
-        private string text;
+        string text;
+        float alpha = 1.0f;
 
         //////////////////////////////////////////////////////////////////////
 
@@ -41,16 +42,25 @@ namespace UI
                 {
                     name = name.Substring(0, 5);
                 }
+                // need to delete all the existing letters
+                if (letters != null)
+                {
+                    for (int i = 0; i < letters.Length; ++i)
+                    {
+                        Destroy(letters[i].gameObject);
+                    }
+                }
                 letters = new Glyph[text.Length];
                 float x = 0;
                 for (int i = 0, l = text.Length; i < l; ++i)
                 {
                     Glyph g = UI.Glyph.Create(typeface, text[i]);
                     g.transform.localPosition = new Vector2(x, 0);
-                    g.transform.parent = transform;
+                    g.transform.SetParent(transform);
                     letters[i] = g;
                     x += g.advance;
                 }
+                Alpha = alpha;  // hmph
             }
         }
 
@@ -67,6 +77,37 @@ namespace UI
                 name = "Text " + value.Substring(0, Math.Min(value.Length, 5));
                 text = value;
                 Setup();
+            }
+        }
+
+        //////////////////////////////////////////////////////////////////////
+
+        public float Alpha
+        {
+            get
+            {
+                return alpha;
+            }
+            set
+            {
+                alpha = value;
+                for (int i = 0; i < letters.Length; ++i)
+                {
+                    Glyph g = letters[i];
+                    if (g.letter != null)
+                    {
+                        for (int j = 0; j < g.letter.Length; ++j)
+                        {
+                            SpriteRenderer r = g.letter[j].GetComponent<SpriteRenderer>();
+                            if (r != null) // this should be redundant
+                            {
+                                Color c = r.material.color;
+                                c.a = value;
+                                r.material.color = c;
+                            }
+                        }
+                    }
+                }
             }
         }
 

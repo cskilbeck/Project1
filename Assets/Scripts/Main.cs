@@ -16,6 +16,7 @@ public class Main : MonoBehaviour
     TypeFace arialFont;
     TypeFace debugFont;
     TypeFace calibriFont;
+    TypeFace digitsFont;
 	Label helloText;
     Label debugMessage;
     Label banner;
@@ -34,7 +35,8 @@ public class Main : MonoBehaviour
         debugFont = TypeFace.Load("Fixedsys");
         arialFont = TypeFace.Load("Arial");
         calibriFont = TypeFace.Load("Calibri");
-        Tile.SetTypeFace(arialFont);
+        digitsFont = TypeFace.Load("digits");
+        Tile.SetTypeFace(arialFont, digitsFont);
         piece2 = Util.Create<Tile>();
         piece2.Sprite = Tiles.Get(4, 2);
         piece2.Letter = 'Z';

@@ -77,6 +77,7 @@ public class Tile : MonoBehaviour
     SpriteRenderer tileRenderer;
     BoxCollider2D boxCollider;
     Glyph glyph;
+    UI.Label scoreLabel;
     float angle;
     Vector2 position;
     char letter;
@@ -84,12 +85,14 @@ public class Tile : MonoBehaviour
     //////////////////////////////////////////////////////////////////////
 
     static TypeFace typeFace;
+    static TypeFace digitsTypeFace;
 
     //////////////////////////////////////////////////////////////////////
 
-    public static void SetTypeFace(TypeFace face)
+    public static void SetTypeFace(TypeFace faceFont, TypeFace digitsFont)
     {
-        typeFace = face;
+        typeFace = faceFont;
+        digitsTypeFace = digitsFont;
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -99,6 +102,13 @@ public class Tile : MonoBehaviour
         tileRenderer = gameObject.AddComponent<SpriteRenderer>();
         tileRenderer.transform.localScale = new Vector3(1, -1, 1);
         boxCollider = gameObject.AddComponent<BoxCollider2D>();
+        scoreLabel = Util.Create<UI.Label>();
+        scoreLabel.String = "10";
+        scoreLabel.TypeFace = digitsTypeFace;
+        scoreLabel.transform.localScale = new Vector3(0.85f, -0.85f, 1);
+        scoreLabel.transform.localPosition = new Vector3(22, -24, 0);
+        scoreLabel.transform.SetParent(transform);
+        scoreLabel.Alpha = 0.5f;
         wordDetails[Word.horizontal] = new WordDetails();
         wordDetails[Word.vertical] = new WordDetails();
     }
@@ -341,8 +351,8 @@ public class Tile : MonoBehaviour
         Glyph otherGlyph = other.glyph;
         other.SetGlyph(glyph);
         SetGlyph(otherGlyph);
-        other.letter = letter;
-        letter = otherLetter;
+        other.Letter = letter;
+        Letter = otherLetter;
         other.name = "Piece! >>" + Char.ToUpper(other.letter);
         name = "Piece: >>" + Char.ToUpper(letter);
     }
@@ -359,10 +369,18 @@ public class Tile : MonoBehaviour
         {
             letter = Char.ToLower(value);
             char u = Char.ToUpper(value);
+            if (glyph != null)
+            {
+                Destroy(glyph.gameObject);
+            }
             glyph = UI.Glyph.Create(typeFace, u);
-            glyph.transform.localPosition = -glyph.bounds.center;
-            glyph.transform.parent = transform;
+            Vector3 v = -glyph.bounds.center;
+            v.y *= -1;
+            glyph.transform.localPosition = v;
+            glyph.transform.localScale = new Vector3(1, -1, 1);
+            glyph.transform.SetParent(transform);
             name = "Piece:" + u;
+            scoreLabel.String = Letters.GetScore(letter).ToString();
         }
     }
 
