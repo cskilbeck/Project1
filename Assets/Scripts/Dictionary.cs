@@ -13,7 +13,7 @@ public static class Dictionary
 {
     //////////////////////////////////////////////////////////////////////
 
-    public struct Word
+    public class Word
 	{
 		public int index;
 		public string text;

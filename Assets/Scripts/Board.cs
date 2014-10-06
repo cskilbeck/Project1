@@ -43,7 +43,7 @@ public class Board : MonoBehaviour
 				pieces[i++] = p;
 			}
 		}
-        transform.position = new Vector3(48, 48, 0);
+        transform.position = new Vector3(Tiles.tileWidth / 2, Tiles.tileHeight / 2, 0);
         MarkAllWords();
     }
 
@@ -99,8 +99,8 @@ public class Board : MonoBehaviour
             pieces[i].ResetWords();
 		}
 
-		foundWords.Clear();
-		validWords.Clear();
+        foundWords.Clear();
+        validWords.Clear();
 
         MarkWordPass(Word.horizontal, 1, Main.boardWidth, 1, 0);
         MarkWordPass(Word.vertical, Main.boardWidth, Main.boardHeight, 0, 1);
@@ -117,19 +117,16 @@ public class Board : MonoBehaviour
         for (int i = 0, l = foundWords.Count; i < l; ++i)
         {
             Word w = foundWords[i];
-            bool isValid;
-            isValid = true;
+            bool invalid = false;
             for (int t = 0, tl = w.word.text.Length; t < tl; ++t)
             {
-                Tile p = GetWordPiece(w, t);
-                if (p.IsPartOf(Word.vertical) && w.orientation == Word.vertical ||
-                    p.IsPartOf(Word.horizontal) && w.orientation == Word.horizontal)
+                if (GetWordPiece(w, t).IsPartOf(w.orientation))
                 {
-                    isValid = false;
+                    invalid = true;
                     break;
                 }
             }
-            if (isValid)
+            if (!invalid)
             {
                 validWords.Add(w);
                 score += w.score;

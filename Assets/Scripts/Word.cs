@@ -1,6 +1,7 @@
 //////////////////////////////////////////////////////////////////////
 
 using System;
+using System.Collections.Generic;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -34,12 +35,19 @@ public class Word : IComparable
 
     //////////////////////////////////////////////////////////////////////
 
+    private void Init(int x, int y, int orientation, Dictionary.Word word)
+    {
+        this.x = x;
+        this.y = y;
+        this.orientation = orientation;
+        this.word = word;
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
     public Word(int x, int y, int orientation, Dictionary.Word word)
 	{
-		this.x = x;
-		this.y = y;
-		this.orientation = orientation;
-		this.word = word;
+        Init(x, y, orientation, word);
 	}
 
     //////////////////////////////////////////////////////////////////////
