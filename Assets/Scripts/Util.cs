@@ -17,6 +17,10 @@ public static class Util
         return obj;
     }
 
+    // Look for a function called 'Init'
+    // If it exists, try and call it with the supplied parameters
+    // 
+
     //////////////////////////////////////////////////////////////////////
 
     public static float Ease(float x)

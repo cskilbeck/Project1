@@ -2,6 +2,8 @@
 
 using UnityEngine;
 using UI;
+using System.Xml;
+using System.Xml.Serialization;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -20,8 +22,6 @@ public class Main : MonoBehaviour
 	Label helloText;
     Label debugMessage;
     Label banner;
-
-    //////////////////////////////////////////////////////////////////////
 
     void Start()
 	{
