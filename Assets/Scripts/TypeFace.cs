@@ -88,7 +88,6 @@ namespace UI
 
         private TypeFace(string name)
 		{
-            Debug.Log("TypeFace::TypeFace(" + name + ")");
             refCount = 0;
 			texture = (Texture2D)Resources.Load(name + "0");
 

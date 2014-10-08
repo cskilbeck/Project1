@@ -25,7 +25,6 @@ public class Main : MonoBehaviour
 
     void Start()
 	{
-        Debug.Log("Main: Start");
         Screen.SetResolution(1280, 720, false);
         Camera.main.projectionMatrix = Matrix4x4.Ortho(0, Screen.width, Screen.height, 0, 0, 100);
         Tiles.Create();
