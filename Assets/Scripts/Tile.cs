@@ -84,12 +84,12 @@ public class Tile : MonoBehaviour
 
     //////////////////////////////////////////////////////////////////////
 
-    static TypeFace typeFace;
-    static TypeFace digitsTypeFace;
+    static BitmapFont typeFace;
+    static BitmapFont digitsTypeFace;
 
     //////////////////////////////////////////////////////////////////////
 
-    public static void SetTypeFace(TypeFace faceFont, TypeFace digitsFont)
+    public static void SetTypeFace(BitmapFont faceFont, BitmapFont digitsFont)
     {
         typeFace = faceFont;
         digitsTypeFace = digitsFont;
@@ -103,7 +103,7 @@ public class Tile : MonoBehaviour
         tileRenderer.transform.localScale = new Vector3(1, -1, 1);
         boxCollider = gameObject.AddComponent<BoxCollider2D>();
         scoreLabel = Util.Create<UI.Label>();
-        scoreLabel.String = "10";
+        scoreLabel.Text = "10";
         scoreLabel.TypeFace = digitsTypeFace;
         scoreLabel.transform.localScale = new Vector3(0.85f, -0.85f, 1);
         scoreLabel.transform.localPosition = new Vector3(22, -24, 0);
@@ -380,7 +380,7 @@ public class Tile : MonoBehaviour
             glyph.transform.localScale = new Vector3(1, -1, 1);
             glyph.transform.SetParent(transform);
             name = "Piece:" + u;
-            scoreLabel.String = Letters.GetScore(letter).ToString();
+            scoreLabel.Text = Letters.GetScore(letter).ToString();
         }
     }
 

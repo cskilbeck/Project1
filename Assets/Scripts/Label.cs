@@ -3,30 +3,79 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using SimpleJSON;
 
 /////////////////////////////////////////////////////////////////////////////
 
 namespace UI
 {
-	/////////////////////////////////////////////////////////////////////////////
-	
+    /////////////////////////////////////////////////////////////////////////////
+
+    [CustomEditor(typeof(Label))]
+    public class LabelEditor : Editor
+    {
+        [MenuItem("GameObject/Create Other/Label")]
+        static public void CreateLabel()
+        {
+            Label t = Util.Create<Label>();
+            t.Text = "";
+        }
+
+        public override void OnInspectorGUI()
+        {
+            Label l = target as Label;
+            EditorGUILayout.BeginVertical();
+            l.TypeFace = EditorGUILayout.ObjectField(l.typeface, typeof(BitmapFont)) as BitmapFont;
+            l.Text = EditorGUILayout.TextField(l.Text);
+            l.alpha = EditorGUILayout.Slider(l.alpha, 0, 1);
+            EditorGUILayout.EndVertical();
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
+
+    [Serializable]
 	public class Label : MonoBehaviour
 	{
         //////////////////////////////////////////////////////////////////////
 
-        private TypeFace typeface;
-		public Glyph[] letters;
-        string text;
-        float alpha = 1.0f;
+        public BitmapFont typeface;
+        public float alpha = 1.0f;
+        public string text;
+
+        private Glyph[] letters;
 
         //////////////////////////////////////////////////////////////////////
 
-        public static Label Create(TypeFace face, string txt)
+        public string Text
+        {
+            get
+            {
+                return text;
+            }
+            set
+            {
+                name = "Text " + value.Substring(0, Math.Min(value.Length, 5));
+                text = value;
+                Setup();
+            }
+        }
+
+        //////////////////////////////////////////////////////////////////////
+
+        void OnEnable()
+        {
+            Setup();
+        }
+
+        //////////////////////////////////////////////////////////////////////
+
+        public static Label Create(BitmapFont face, string txt)
         {
             Label t = Util.Create<Label>();
             t.TypeFace = face;
-            t.String = txt;
+            t.Text = txt;
             return t;
         }
 
@@ -47,7 +96,7 @@ namespace UI
                 {
                     for (int i = 0; i < letters.Length; ++i)
                     {
-                        Destroy(letters[i].gameObject);
+                        DestroyImmediate(letters[i].gameObject);
                     }
                 }
                 letters = new Glyph[text.Length];
@@ -58,25 +107,9 @@ namespace UI
                     g.transform.localPosition = new Vector2(x, 0);
                     g.transform.SetParent(transform);
                     letters[i] = g;
-                    x += g.advance;
+                    x += g.advance * 0.0075f;
                 }
                 Alpha = alpha;  // hmph
-            }
-        }
-
-        //////////////////////////////////////////////////////////////////////
-
-        public string String
-        {
-            get
-            {
-                return text;
-            }
-            set
-            {
-                name = "Text " + value.Substring(0, Math.Min(value.Length, 5));
-                text = value;
-                Setup();
             }
         }
 
@@ -101,9 +134,9 @@ namespace UI
                             SpriteRenderer r = g.letter[j].GetComponent<SpriteRenderer>();
                             if (r != null) // this should be redundant
                             {
-                                Color c = r.material.color;
+                                Color c = r.sharedMaterial.color;
                                 c.a = value;
-                                r.material.color = c;
+                                r.sharedMaterial.color = c;
                             }
                         }
                     }
@@ -113,7 +146,7 @@ namespace UI
 
         //////////////////////////////////////////////////////////////////////
 
-        public TypeFace TypeFace
+        public BitmapFont TypeFace
         {
             get
             {

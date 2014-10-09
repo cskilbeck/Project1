@@ -2,6 +2,7 @@
 
 using System;
 using UnityEngine;
+using UnityEditor;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -17,9 +18,23 @@ public static class Util
         return obj;
     }
 
-    // Look for a function called 'Init'
-    // If it exists, try and call it with the supplied parameters
-    // 
+    //////////////////////////////////////////////////////////////////////
+
+    public static string CreateAssetFolder(string parent, string name)
+    {
+        string guid = AssetDatabase.AssetPathToGUID(parent);            // if parent exists
+        if (guid.Length > 0)
+        {
+            string newPath = parent + "/" + name;
+            guid = AssetDatabase.AssetPathToGUID(newPath);              // and new folder doesn't
+            if (guid.Length == 0)
+            {
+                guid = AssetDatabase.CreateFolder(parent, name);        // create it
+            }
+            return AssetDatabase.GUIDToAssetPath(guid);                 // return the path
+        }
+        return "";                                                      // or "" if it couldn't (parent didn't exist)
+    }
 
     //////////////////////////////////////////////////////////////////////
 

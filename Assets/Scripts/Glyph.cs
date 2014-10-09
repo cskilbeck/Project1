@@ -17,7 +17,7 @@ namespace UI
 
         //////////////////////////////////////////////////////////////////////
 
-        public static Glyph Create(TypeFace font, char c)
+        public static Glyph Create(BitmapFont font, char c)
         {
             Glyph g = Util.Create<Glyph>();
             g.Init(font, c);
@@ -26,31 +26,29 @@ namespace UI
 
         //////////////////////////////////////////////////////////////////////
 
-        private void Init(TypeFace font, char c)
+        private void Init(BitmapFont font, char c)
         {
-            TypeFace.GlyphDescriptor g;
-            if (!font.glyphs.ContainsKey(c))
+            BitmapFont.GlyphRenderer g = font.GetGlyphDetails(c);
+            if(g != null)
             {
-                c = font.defaultChar;
-            }
-            name = "Glyph " + c;
-            g = font.glyphs[c];
-            advance = g.advance;
-            int ic = g.imageCount;
-            if (ic > 0)
-            {
-                letter = new GameObject[g.imageCount];
-                for (int i = 0; i < ic; ++i)
+                name = "Glyph " + c;
+                advance = g.advance;
+                int ic = g.imageCount;
+                if (ic > 0)
                 {
-                    GameObject l = new GameObject("Layer:" + i.ToString());
-                    SpriteRenderer sr = l.AddComponent<SpriteRenderer>();
-                    sr.sprite = g.images[i];
-                    Vector2 off = g.offsets[i];
-                    l.transform.localPosition = off;
-                    l.transform.localScale = new Vector2(1, -1);
-                    l.transform.parent = transform;
-                    sr.sortingOrder = (ic - i) + 20;
-                    letter[i] = l;
+                    letter = new GameObject[g.imageCount];
+                    for (int i = 0; i < ic; ++i)
+                    {
+                        GameObject l = new GameObject("Layer:" + i.ToString());
+                        SpriteRenderer sr = l.AddComponent<SpriteRenderer>();
+                        sr.sprite = g.images[i];
+                        Vector2 off = g.offsets[i];
+                        l.transform.localPosition = off;
+                        l.transform.localScale = new Vector2(1, -1);
+                        l.transform.parent = transform;
+                        sr.sortingOrder = (ic - i) + 20;
+                        letter[i] = l;
+                    }
                 }
             }
         }

@@ -42,15 +42,47 @@ public class BitmapFontEditor : Editor
         AssetDatabase.SaveAssets();
     }
 
+    Vector2 scrollPosition = Vector2.zero;
+    int currentPage = 0;
+
     public override void OnInspectorGUI()
     {
-        BitmapFont f = target as BitmapFont;
+        BitmapFont font = target as BitmapFont;
+        int pageCount = font.pages.Length;
+        string[] pageNames = new string[pageCount];
+        int[] pageValues = new int[pageCount];
+
+        for (int i = 0; i < pageCount; ++i)
+        {
+            pageNames[i] = i.ToString();
+            pageValues[i] = i;
+        }
+
         EditorGUILayout.BeginVertical();
-        EditorGUILayout.LabelField(f.name);
-        EditorGUILayout.IntField("Pages:", f.data.PageCount);
-        EditorGUILayout.IntField("Height:", f.data.Height);
-        EditorGUILayout.IntField("Glyphs:", f.data.Glyphs.Count);
+        EditorGUILayout.LabelField(font.name + ", Pages: " + pageCount.ToString());
+        EditorGUILayout.IntField("Height:", font.data.Height);
+        EditorGUILayout.IntField("Glyphs:", font.data.Glyphs.Count);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Page: ");
+        currentPage = EditorGUILayout.IntPopup(currentPage, pageNames, pageValues);
+        EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndVertical();
+
+        const int tpageSize = 256;
+        Texture2D page = font.pages[currentPage];
+        if (page != null)
+        {
+            float height = page.height;
+            float width = page.width;
+            float scale = Mathf.Min(1, tpageSize / Mathf.Min(width, height));
+            Rect topLeft = EditorGUILayout.BeginVertical();
+            Rect inner = new Rect(0, 0, width * scale, height * scale);
+            topLeft.size = new Vector2(tpageSize, tpageSize);
+            scrollPosition = GUI.BeginScrollView(topLeft, scrollPosition, inner);
+            EditorGUI.DrawTextureTransparent(inner, page);
+            GUI.EndScrollView();
+            EditorGUILayout.EndVertical();
+        }
     }
 }
 
@@ -170,6 +202,9 @@ public class BitmapFont : ScriptableObject
     [SerializeField]
     public Data data;
 
+    [SerializeField]
+    public Texture2D[] pages;
+
     public class GlyphRenderer
     {
 		public char c;
@@ -187,8 +222,18 @@ public class BitmapFont : ScriptableObject
 		}
     }
 
+    public GlyphRenderer GetGlyphDetails(char c)
+    {
+        return glyph.ContainsKey(c) ? glyph[c] : null;
+    }
+
+    // rebuild these in OnEnable
     private Dictionary<char, GlyphRenderer> glyph;
-    private Texture2D[] pages;
+
+    void OnEnable()
+    {
+        CreateGlyphSprites();
+    }
 
     private void LoadTextures()
     {
@@ -202,31 +247,56 @@ public class BitmapFont : ScriptableObject
             byte[] file = File.ReadAllBytes(texturePageName);
             if (file != null && file.Length != 0 && page.LoadImage(file))
             {
-                AssetDatabase.AddObjectToAsset(page, this);
                 pages[i] = page;
+                string path = Util.CreateAssetFolder("Assets", "FontPages");
+                if (path.Length > 0)
+                {
+                    path = Util.CreateAssetFolder(path, fileName);
+                    if (path.Length > 0)
+                    {
+                        string assetPath = path + "/" + i.ToString();
+                        AssetDatabase.CreateAsset(page, assetPath);
+                        AssetDatabase.SaveAssets();
+                    }
+                }
             }
         }
     }
 
     private void CreateGlyphSprites()
     {
-        Vector2 pivot = new Vector2(0, 0.5f);
-        glyph = new Dictionary<char, GlyphRenderer>();
-        foreach (Glyph g in data.Glyphs.Glyph)
+        if (data != null)
         {
-            Sprite[] sprites = new Sprite[g.images];
-            Vector2[] offs = new Vector2[g.images];
-            for (int i = 0; i < g.images; ++i)
+            Vector2 pivot = new Vector2(0, 0.5f);
+            glyph = new Dictionary<char, GlyphRenderer>();
+            foreach (Glyph g in data.Glyphs.Glyph)
             {
-                Graphic gr = g.Graphic[i];
-                Texture2D page = pages[gr.page];
-                float th = (float)page.height;
-                Rect r = new Rect(gr.x, th - gr.y - gr.h, gr.w, gr.h);
-                offs[i] = new Vector2(gr.offsetX, gr.offsetY);
-                sprites[i] = Sprite.Create(pages[i], r, pivot);
+                Sprite[] sprites = new Sprite[g.images];
+                Vector2[] offs = new Vector2[g.images];
+                bool valid = true;
+                for (int i = 0; i < g.images; ++i)
+                {
+                    Graphic gr = g.Graphic[i];
+                    Texture2D page = pages[gr.page];
+                    if (page != null)
+                    {
+                        float th = (float)page.height;
+                        Rect r = new Rect(gr.x, th - gr.y - gr.h, gr.w, gr.h);
+                        offs[i] = new Vector2(gr.offsetX, gr.offsetY);
+                        sprites[i] = Sprite.Create(pages[gr.page], r, pivot);
+                    }
+                    else
+                    {
+                        valid = false;
+                        break;
+                    }
+                }
+                if (valid)
+                {
+                    GlyphRenderer glr = new GlyphRenderer(g.images, g.advance, sprites, offs);
+                    glyph.Add((char)g.charcode, glr);
+                }
             }
-            GlyphRenderer glr = new GlyphRenderer(g.images, g.advance, sprites, offs);
-            glyph.Add((char)g.charcode, glr);
         }
     }
 

@@ -1,0 +1,501 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c02ad9a3f1e59f4ba24544457b7892d, type: 3}
+  m_Name: Arial
+  m_EditorClassIdentifier: 
+  sourceFilename: d:/Users/chs/Documents/Visual Studio 2012/Projects/TypeScriptTest/TypeScriptTest/public_html/img/Arial.bitmapfont
+  data:
+    PageCount: 1
+    Height: 52
+    InternalLeading: 0
+    Baseline: 37.857419999999998
+    Layers:
+      Count: 2
+      Layer:
+      - offsetX: 0
+        offsetY: 0
+        color: FF000000
+      - offsetX: 0
+        offsetY: 0
+        color: FFFFFFFF
+    Glyphs:
+      Count: 26
+      Glyph:
+      - charcode: 65
+        images: 2
+        advance: 37.4003906
+        Graphic:
+        - offsetX: -16.6035194
+          offsetY: -17
+          x: 68
+          y: 153
+          w: 69
+          h: 73
+          page: 0
+        - offsetX: -.103515603
+          offsetY: -1.5
+          x: 376
+          y: 270
+          w: 38
+          h: 42
+          page: 0
+      - charcode: 66
+        images: 2
+        advance: 37.4003906
+        Graphic:
+        - offsetX: -14.9882803
+          offsetY: -18.3652306
+          x: 426
+          y: 1
+          w: 67
+          h: 75
+          page: 0
+        - offsetX: 2.51171899
+          offsetY: -.865234375
+          x: 426
+          y: 315
+          w: 34
+          h: 41
+          page: 0
+      - charcode: 67
+        images: 2
+        advance: 38.4921913
+        Graphic:
+        - offsetX: -16.4101601
+          offsetY: -18
+          x: 356
+          y: 1
+          w: 69
+          h: 75
+          page: 0
+        - offsetX: 1.08984399
+          offsetY: -1.5
+          x: 415
+          y: 270
+          w: 37
+          h: 42
+          page: 0
+      - charcode: 68
+        images: 2
+        advance: 38.4921913
+        Graphic:
+        - offsetX: -14.8867197
+          offsetY: -17.3652306
+          x: 429
+          y: 77
+          w: 68
+          h: 74
+          page: 0
+        - offsetX: 2.61328101
+          offsetY: -.865234375
+          x: 354
+          y: 313
+          w: 35
+          h: 41
+          page: 0
+      - charcode: 69
+        images: 2
+        advance: 34.6835899
+        Graphic:
+        - offsetX: -14.9375
+          offsetY: -18.3652306
+          x: 144
+          y: 1
+          w: 64
+          h: 76
+          page: 0
+        - offsetX: 2.5625
+          offsetY: -.865234375
+          x: 277
+          y: 343
+          w: 32
+          h: 41
+          page: 0
+      - charcode: 70
+        images: 2
+        advance: 31.4081993
+        Graphic:
+        - offsetX: -15.0898399
+          offsetY: -18.3652306
+          x: 341
+          y: 152
+          w: 61
+          h: 74
+          page: 0
+        - offsetX: 2.41015601
+          offsetY: -.865234375
+          x: 65
+          y: 344
+          w: 29
+          h: 41
+          page: 0
+      - charcode: 71
+        images: 2
+        advance: 41.1835899
+        Graphic:
+        - offsetX: -16.4609394
+          offsetY: -18
+          x: 283
+          y: 1
+          w: 72
+          h: 75
+          page: 0
+        - offsetX: 1.03906298
+          offsetY: -1.5
+          x: 336
+          y: 270
+          w: 39
+          h: 42
+          page: 0
+      - charcode: 72
+        images: 2
+        advance: 39.5078087
+        Graphic:
+        - offsetX: -14.8867197
+          offsetY: -17
+          x: 138
+          y: 153
+          w: 68
+          h: 73
+          page: 0
+        - offsetX: 2.61328101
+          offsetY: -1.5
+          x: 1
+          y: 301
+          w: 35
+          h: 42
+          page: 0
+      - charcode: 73
+        images: 2
+        advance: 16.2753906
+        Graphic:
+        - offsetX: -14.6328096
+          offsetY: -17
+          x: 464
+          y: 152
+          w: 44
+          h: 73
+          page: 0
+        - offsetX: 2.86718798
+          offsetY: -1.5
+          x: 490
+          y: 272
+          w: 11
+          h: 42
+          page: 0
+      - charcode: 74
+        images: 2
+        advance: 29.8085899
+        Graphic:
+        - offsetX: -17.0097694
+          offsetY: -17
+          x: 403
+          y: 152
+          w: 60
+          h: 74
+          page: 0
+        - offsetX: -.509765625
+          offsetY: -1.5
+          x: 248
+          y: 301
+          w: 28
+          h: 42
+          page: 0
+      - charcode: 75
+        images: 2
+        advance: 38.4921913
+        Graphic:
+        - offsetX: -14.8867197
+          offsetY: -17
+          x: 70
+          y: 227
+          w: 67
+          h: 73
+          page: 0
+        - offsetX: 2.61328101
+          offsetY: -1.5
+          x: 37
+          y: 301
+          w: 35
+          h: 42
+          page: 0
+      - charcode: 76
+        images: 2
+        advance: 31.4081993
+        Graphic:
+        - offsetX: -15.0898399
+          offsetY: -17
+          x: 145
+          y: 78
+          w: 62
+          h: 74
+          page: 0
+        - offsetX: 2.41015601
+          offsetY: -1.5
+          x: 34
+          y: 344
+          w: 30
+          h: 41
+          page: 0
+      - charcode: 77
+        images: 2
+        advance: 43.3164101
+        Graphic:
+        - offsetX: -15.26758
+          offsetY: -17.3652306
+          x: 356
+          y: 77
+          w: 72
+          h: 74
+          page: 0
+        - offsetX: 2.23242211
+          offsetY: -.865234375
+          x: 277
+          y: 301
+          w: 39
+          h: 41
+          page: 0
+      - charcode: 78
+        images: 2
+        advance: 39.5078087
+        Graphic:
+        - offsetX: -14.8359404
+          offsetY: -17
+          x: 1
+          y: 227
+          w: 68
+          h: 73
+          page: 0
+        - offsetX: 2.66406298
+          offsetY: -1.5
+          x: 73
+          y: 301
+          w: 35
+          h: 42
+          page: 0
+      - charcode: 79
+        images: 2
+        advance: 41.1835899
+        Graphic:
+        - offsetX: -16.6640606
+          offsetY: -18
+          x: 209
+          y: 1
+          w: 73
+          h: 75
+          page: 0
+        - offsetX: .8359375
+          offsetY: -1.5
+          x: 387
+          y: 227
+          w: 40
+          h: 42
+          page: 0
+      - charcode: 80
+        images: 2
+        advance: 34.6835899
+        Graphic:
+        - offsetX: -14.9375
+          offsetY: -17.3652306
+          x: 206
+          y: 227
+          w: 64
+          h: 73
+          page: 0
+        - offsetX: 2.5625
+          offsetY: -.865234375
+          x: 1
+          y: 344
+          w: 32
+          h: 41
+          page: 0
+      - charcode: 81
+        images: 2
+        advance: 41.1835899
+        Graphic:
+        - offsetX: -16.6640606
+          offsetY: -18
+          x: 1
+          y: 1
+          w: 74
+          h: 77
+          page: 0
+        - offsetX: .8359375
+          offsetY: -1.5
+          x: 464
+          y: 226
+          w: 42
+          h: 45
+          page: 0
+      - charcode: 82
+        images: 2
+        advance: 37.4003906
+        Graphic:
+        - offsetX: -14.9882803
+          offsetY: -18.3652306
+          x: 1
+          y: 79
+          w: 66
+          h: 74
+          page: 0
+        - offsetX: 2.51171899
+          offsetY: -.865234375
+          x: 461
+          y: 315
+          w: 34
+          h: 41
+          page: 0
+      - charcode: 83
+        images: 2
+        advance: 34.6835899
+        Graphic:
+        - offsetX: -15.23242
+          offsetY: -18
+          x: 209
+          y: 77
+          w: 64
+          h: 75
+          page: 0
+        - offsetX: 1.26757801
+          offsetY: -1.5
+          x: 180
+          y: 301
+          w: 33
+          h: 42
+          page: 0
+      - charcode: 84
+        images: 2
+        advance: 32.5
+        Graphic:
+        - offsetX: -17.5429707
+          offsetY: -18.3652306
+          x: 274
+          y: 152
+          w: 66
+          h: 74
+          page: 0
+        - offsetX: -1.04296899
+          offsetY: -.865234375
+          x: 390
+          y: 313
+          w: 35
+          h: 41
+          page: 0
+      - charcode: 85
+        images: 2
+        advance: 39.5078087
+        Graphic:
+        - offsetX: -14.8867197
+          offsetY: -17
+          x: 76
+          y: 78
+          w: 68
+          h: 74
+          page: 0
+        - offsetX: 2.61328101
+          offsetY: -1.5
+          x: 109
+          y: 301
+          w: 35
+          h: 42
+          page: 0
+      - charcode: 86
+        images: 2
+        advance: 35.7753906
+        Graphic:
+        - offsetX: -16.45117
+          offsetY: -17
+          x: 138
+          y: 227
+          w: 67
+          h: 73
+          page: 0
+        - offsetX: .0488281287
+          offsetY: -1.5
+          x: 453
+          y: 272
+          w: 36
+          h: 42
+          page: 0
+      - charcode: 87
+        images: 2
+        advance: 48.7753906
+        Graphic:
+        - offsetX: -17.11133
+          offsetY: -18
+          x: 274
+          y: 77
+          w: 81
+          h: 74
+          page: 0
+        - offsetX: -.611328125
+          offsetY: -1.5
+          x: 336
+          y: 227
+          w: 50
+          h: 42
+          page: 0
+      - charcode: 88
+        images: 2
+        advance: 31.4081993
+        Graphic:
+        - offsetX: -17.1621094
+          offsetY: -17
+          x: 271
+          y: 227
+          w: 64
+          h: 73
+          page: 0
+        - offsetX: -.662109375
+          offsetY: -1.5
+          x: 214
+          y: 301
+          w: 33
+          h: 42
+          page: 0
+      - charcode: 89
+        images: 2
+        advance: 32.5
+        Graphic:
+        - offsetX: -16.9081993
+          offsetY: -17
+          x: 207
+          y: 153
+          w: 65
+          h: 73
+          page: 0
+        - offsetX: -.408203095
+          offsetY: -1.5
+          x: 145
+          y: 301
+          w: 34
+          h: 42
+          page: 0
+      - charcode: 90
+        images: 2
+        advance: 33.5918007
+        Graphic:
+        - offsetX: -17.6953106
+          offsetY: -18.3652306
+          x: 76
+          y: 1
+          w: 67
+          h: 76
+          page: 0
+        - offsetX: -1.19531298
+          offsetY: -.865234375
+          x: 317
+          y: 313
+          w: 36
+          h: 41
+          page: 0
+  pages:
+  - {fileID: 2800000, guid: 1e44974bc2c9d4d41951eaf13eae5528, type: 2}
