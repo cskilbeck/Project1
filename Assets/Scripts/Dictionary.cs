@@ -55,9 +55,9 @@ public static class Dictionary
     private static int CalculateWordScore(string word)
 	{
 		int score = 0;
-		foreach(char c in word)
-		{
-			score += Letters.GetScore(c);
+        for (int i = 0, l = word.Length; i < l; ++i)
+        {
+			score += Letters.GetScore(word[i]);
 		}
 		return score * word.Length;
 	}
@@ -87,14 +87,7 @@ public static class Dictionary
 
     public static string GetDefinition(string word)
 	{
-		if(IsWord(word))
-		{
-			return GetWord(word).definition;
-		}
-		else
-		{
-			return "?";
-		}
+		return IsWord(word) ? GetWord(word).definition : "?";
 	}
 }
 

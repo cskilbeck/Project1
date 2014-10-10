@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c02ad9a3f1e59f4ba24544457b7892d, type: 3}
   m_Name: Arial
   m_EditorClassIdentifier: 
-  sourceFilename: d:/Users/chs/Documents/Visual Studio 2012/Projects/TypeScriptTest/TypeScriptTest/public_html/img/Arial.bitmapfont
+  sourceFilename: D:/Users/charlie/Projects/TypeScriptTest/TypeScriptTest/public_html/img/Arial.bitmapfont
   data:
     PageCount: 1
     Height: 52

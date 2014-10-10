@@ -12,6 +12,8 @@ namespace UI
 	
 	public class Glyph : MonoBehaviour
 	{
+        public char character;
+        public BitmapFont font;
 		public GameObject[] letter;
 		public float advance;
 
@@ -28,6 +30,8 @@ namespace UI
 
         private void Init(BitmapFont font, char c)
         {
+            character = c;
+            this.font = font;
             BitmapFont.GlyphRenderer g = font.GetGlyphDetails(c);
             if(g != null)
             {
@@ -42,11 +46,10 @@ namespace UI
                         GameObject l = new GameObject("Layer:" + i.ToString());
                         SpriteRenderer sr = l.AddComponent<SpriteRenderer>();
                         sr.sprite = g.images[i];
-                        Vector2 off = g.offsets[i];
+                        Vector2 off = new Vector2(g.offsets[i].x, g.offsets[i].y);
                         l.transform.localPosition = off;
-                        l.transform.localScale = new Vector2(1, -1);
-                        l.transform.parent = transform;
-                        sr.sortingOrder = (ic - i) + 20;
+                        l.transform.SetParent(transform);
+                        sr.sortingOrder = i + 20;
                         letter[i] = l;
                     }
                 }

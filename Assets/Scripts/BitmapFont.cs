@@ -37,9 +37,9 @@ public class BitmapFontEditor : Editor
                     }
                 }
             }
+            AssetDatabase.CreateAsset(f, "Assets/" + f.name + ".asset");
+            AssetDatabase.SaveAssets();
         }
-        AssetDatabase.CreateAsset(f, "Assets/" + f.name + ".asset");
-        AssetDatabase.SaveAssets();
     }
 
     Vector2 scrollPosition = Vector2.zero;
@@ -68,16 +68,13 @@ public class BitmapFontEditor : Editor
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndVertical();
 
-        const int tpageSize = 256;
         Texture2D page = font.pages[currentPage];
         if (page != null)
         {
-            float height = page.height;
-            float width = page.width;
-            float scale = Mathf.Min(1, tpageSize / Mathf.Min(width, height));
+            float scale = Mathf.Min(1.0f, 256.0f / Mathf.Min(page.width, page.height));
             Rect topLeft = EditorGUILayout.BeginVertical();
-            Rect inner = new Rect(0, 0, width * scale, height * scale);
-            topLeft.size = new Vector2(tpageSize, tpageSize);
+            Rect inner = new Rect(0, 0, page.width * scale, page.height * scale);
+            topLeft.size = new Vector2(256, 256);
             scrollPosition = GUI.BeginScrollView(topLeft, scrollPosition, inner);
             EditorGUI.DrawTextureTransparent(inner, page);
             GUI.EndScrollView();
@@ -248,6 +245,7 @@ public class BitmapFont : ScriptableObject
             if (file != null && file.Length != 0 && page.LoadImage(file))
             {
                 pages[i] = page;
+                page.filterMode = FilterMode.Point;
                 string path = Util.CreateAssetFolder("Assets", "FontPages");
                 if (path.Length > 0)
                 {

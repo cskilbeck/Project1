@@ -26,9 +26,18 @@ namespace UI
         {
             Label l = target as Label;
             EditorGUILayout.BeginVertical();
-            l.TypeFace = EditorGUILayout.ObjectField(l.typeface, typeof(BitmapFont)) as BitmapFont;
+            EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(false));
+            EditorGUILayout.LabelField("Font:");
+            l.TypeFace = EditorGUILayout.ObjectField(l.typeface, typeof(BitmapFont), false) as BitmapFont;
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(false));
+            EditorGUILayout.LabelField("Text:");
             l.Text = EditorGUILayout.TextField(l.Text);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(false));
+            EditorGUILayout.LabelField("Alpha:");
             l.alpha = EditorGUILayout.Slider(l.alpha, 0, 1);
+            EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndVertical();
         }
     }
@@ -91,14 +100,18 @@ namespace UI
                 {
                     name = name.Substring(0, 5);
                 }
-                // need to delete all the existing letters
+                // delete all the existing letters, if the user hasn't already
                 if (letters != null)
                 {
                     for (int i = 0; i < letters.Length; ++i)
                     {
-                        DestroyImmediate(letters[i].gameObject);
+                        if (letters[i].gameObject != null)
+                        {
+                            DestroyImmediate(letters[i].gameObject);
+                        }
                     }
                 }
+
                 letters = new Glyph[text.Length];
                 float x = 0;
                 for (int i = 0, l = text.Length; i < l; ++i)
@@ -107,7 +120,7 @@ namespace UI
                     g.transform.localPosition = new Vector2(x, 0);
                     g.transform.SetParent(transform);
                     letters[i] = g;
-                    x += g.advance * 0.0075f;
+                    x += g.advance * 0.05f;
                 }
                 Alpha = alpha;  // hmph
             }
