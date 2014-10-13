@@ -19,6 +19,24 @@ namespace UI
 
         //////////////////////////////////////////////////////////////////////
 
+        public Camera Camera2D
+        {
+            get
+            {
+                return glyphCamera;
+            }
+            set
+            {
+                glyphCamera = value;
+            }
+        }
+
+        //////////////////////////////////////////////////////////////////////
+
+        private static Camera glyphCamera = null;
+
+        //////////////////////////////////////////////////////////////////////
+
         public static Glyph Create(BitmapFont font, char c)
         {
             Glyph g = Util.Create<Glyph>();
@@ -46,12 +64,33 @@ namespace UI
                         GameObject l = new GameObject("Layer:" + i.ToString());
                         SpriteRenderer sr = l.AddComponent<SpriteRenderer>();
                         sr.sprite = g.images[i];
-                        Vector2 off = new Vector2(g.offsets[i].x, g.offsets[i].y);
-                        l.transform.localPosition = off;
+                        Vector3 v = Camera.main.ScreenToWorldPoint(new Vector3(g.offsets[i].x, -g.offsets[i].y, 0));
+                        l.transform.localPosition = v;
                         l.transform.SetParent(transform);
                         sr.sortingOrder = i + 20;
                         letter[i] = l;
                     }
+                }
+            }
+        }
+
+        private void Setup()
+        {
+
+        }
+
+        public char Character
+        {
+            get
+            {
+                return character;
+            }
+            set
+            {
+                if (character != value)
+                {
+                    character = value;
+                    Setup();
                 }
             }
         }

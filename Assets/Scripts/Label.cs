@@ -20,6 +20,7 @@ namespace UI
         {
             Label t = Util.Create<Label>();
             t.Text = "";
+            Selection.activeGameObject = t.gameObject;
         }
 
         public override void OnInspectorGUI()
@@ -51,9 +52,11 @@ namespace UI
 
         public BitmapFont typeface;
         public float alpha = 1.0f;
-        public string text;
+        public string text = "";
 
         private Glyph[] letters;
+        private string oldText = "";
+        private BitmapFont oldTypeface;
 
         //////////////////////////////////////////////////////////////////////
 
@@ -65,9 +68,31 @@ namespace UI
             }
             set
             {
-                name = "Text " + value.Substring(0, Math.Min(value.Length, 5));
                 text = value;
-                Setup();
+                if (text != oldText)
+                {
+                    oldText = text;
+                    Setup();
+                }
+            }
+        }
+
+        //////////////////////////////////////////////////////////////////////
+
+        public BitmapFont TypeFace
+        {
+            get
+            {
+                return typeface;
+            }
+            set
+            {
+                typeface = value;
+                if (typeface != oldTypeface)
+                {
+                    oldTypeface = typeface;
+                    Setup();
+                }
             }
         }
 
@@ -75,7 +100,12 @@ namespace UI
 
         void OnEnable()
         {
-            Setup();
+            if (text != oldText || typeface != oldTypeface)
+            {
+                oldTypeface = typeface;
+                oldText = text;
+                Setup();
+            }
         }
 
         //////////////////////////////////////////////////////////////////////
@@ -92,14 +122,9 @@ namespace UI
 
         private void Setup()
         {
+            // check if anything changed
             if (text != null && typeface != null)
             {
-                string name = text;
-                int sl = text.Length;
-                if (sl > 5)
-                {
-                    name = name.Substring(0, 5);
-                }
                 // delete all the existing letters, if the user hasn't already
                 if (letters != null)
                 {
@@ -117,10 +142,10 @@ namespace UI
                 for (int i = 0, l = text.Length; i < l; ++i)
                 {
                     Glyph g = UI.Glyph.Create(typeface, text[i]);
-                    g.transform.localPosition = new Vector2(x, 0);
+                    g.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, 0, 0));
                     g.transform.SetParent(transform);
                     letters[i] = g;
-                    x += g.advance * 0.05f;
+                    x += g.advance;
                 }
                 Alpha = alpha;  // hmph
             }
@@ -154,21 +179,6 @@ namespace UI
                         }
                     }
                 }
-            }
-        }
-
-        //////////////////////////////////////////////////////////////////////
-
-        public BitmapFont TypeFace
-        {
-            get
-            {
-                return typeface;
-            }
-            set
-            {
-                typeface = value;
-                Setup();
             }
         }
 	}

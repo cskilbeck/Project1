@@ -14,7 +14,7 @@ public static class Util
     {
         var go = new GameObject();
         T obj = go.AddComponent<T>();   // this is when Awake() is called...
-        go.name = obj.GetType().Name;
+        go.name = "New " + obj.GetType().Name;
         return obj;
     }
 

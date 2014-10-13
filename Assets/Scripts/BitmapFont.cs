@@ -265,7 +265,7 @@ public class BitmapFont : ScriptableObject
     {
         if (data != null)
         {
-            Vector2 pivot = new Vector2(0, 0.5f);
+            Vector2 pivot = new Vector2(0, 1);
             glyph = new Dictionary<char, GlyphRenderer>();
             foreach (Glyph g in data.Glyphs.Glyph)
             {
