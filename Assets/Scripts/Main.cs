@@ -14,19 +14,19 @@ public class Main : MonoBehaviour
     
 	public static Board board;
 
-    Tile piece2;
-    TypeFace arialFont;
-    TypeFace debugFont;
-    TypeFace calibriFont;
-    TypeFace digitsFont;
-	Label helloText;
-    Label debugMessage;
-    Label banner;
+    //Tile piece2;
+    //TypeFace arialFont;
+    //TypeFace debugFont;
+    //TypeFace calibriFont;
+    //TypeFace digitsFont;
+    //Label helloText;
+    //Label debugMessage;
+    //Label banner;
 
     void Start()
 	{
         Screen.SetResolution(1280, 720, false);
-        Camera.main.projectionMatrix = Matrix4x4.Ortho(0, Screen.width, Screen.height, 0, 0, 100);
+        //Camera.main.projectionMatrix = Matrix4x4.Ortho(0, Screen.width, Screen.height, 0, 0, 100);
         //Tiles.Create();
         //Letters.Seed(56);
         //Dictionary.Init();

@@ -3,20 +3,21 @@ using System.Collections;
 
 public class MainCamera : MonoBehaviour
 {
-    void Awake()
-    {
-        camera.orthographicSize = Screen.height / 100f / 2f;
-        Debug.Log("Setup camera complete");
-        Vector3 v = Vector3.zero;
-        v = Camera.main.ScreenToWorldPoint(v);
-        Debug.Log("1: " + v.ToString());
-    }
+    public static Camera cam;
 
-	void Start ()
+    public static Camera Get()
     {
-	}
-	
-	void Update ()
-    {
-	}
+        if (cam == null)
+        {
+            GameObject mainCamera = GameObject.FindWithTag("MainCamera");
+            if(mainCamera != null)
+            {
+                GameObject g = GameObject.Instantiate(mainCamera) as GameObject;
+                g.hideFlags = HideFlags.HideAndDontSave | HideFlags.HideInHierarchy | HideFlags.HideInInspector | HideFlags.NotEditable;
+                cam = g.camera;
+                cam.projectionMatrix = Matrix4x4.Ortho(0, Screen.width, 0, Screen.height, 0, 100);
+            }
+        }
+        return cam;
+    }
 }

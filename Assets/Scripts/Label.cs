@@ -142,7 +142,7 @@ namespace UI
                 for (int i = 0, l = text.Length; i < l; ++i)
                 {
                     Glyph g = UI.Glyph.Create(typeface, text[i]);
-                    g.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, 0, 0));
+                    g.transform.localPosition = new Vector3(x, 0, 0);
                     g.transform.SetParent(transform);
                     letters[i] = g;
                     x += g.advance;
