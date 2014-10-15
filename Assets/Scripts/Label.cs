@@ -137,6 +137,8 @@ namespace UI
                     }
                 }
 
+                gameObject.layer = 31;
+
                 letters = new Glyph[text.Length];
                 float x = 0;
                 for (int i = 0, l = text.Length; i < l; ++i)

@@ -48,24 +48,12 @@ namespace UI
                         sr.sprite = g.images[i];
                         l.transform.localPosition = new Vector3(g.offsets[i].x, -g.offsets[i].y, 0);
                         l.transform.SetParent(transform);
+                        l.layer = 31;
                         sr.sortingOrder = i + 20;
                         letter[i] = l;
                     }
                 }
             }
-        }
-
-        void Update()
-        {
-            foreach (Camera c in Camera.allCameras)
-            {
-                c.enabled = false;
-            }
-            MainCamera.Get().enabled = true;
-        }
-
-        private void Setup()
-        {
         }
 
         public char Character
@@ -79,7 +67,7 @@ namespace UI
                 if (character != value)
                 {
                     character = value;
-                    Setup();
+                    Init(font, value);
                 }
             }
         }

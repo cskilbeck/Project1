@@ -20,6 +20,18 @@ public static class Util
 
     //////////////////////////////////////////////////////////////////////
 
+    public static bool DestroyComponent<T>(this Component obj)
+    {
+        var component = obj.GetComponent(typeof(T));
+        if (component != null)
+        {
+            UnityEngine.Object.Destroy(component);
+        }
+        return component != null;
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
     public static string CreateAssetFolder(string parent, string name)
     {
         string guid = AssetDatabase.AssetPathToGUID(parent);            // if parent exists
