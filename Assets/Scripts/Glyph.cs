@@ -49,7 +49,6 @@ namespace UI
                         l.transform.localPosition = new Vector3(g.offsets[i].x, -g.offsets[i].y, 0);
                         l.transform.SetParent(transform);
                         l.layer = 31;
-                        sr.sortingOrder = i + 20;
                         letter[i] = l;
                     }
                 }

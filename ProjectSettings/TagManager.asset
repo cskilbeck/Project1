@@ -37,7 +37,7 @@ TagManager:
   User Layer 28: 
   User Layer 29: 
   User Layer 30: 
-  User Layer 31: 
+  User Layer 31: UIOverlay
   m_SortingLayers:
   - name: Default
     userID: 0
@@ -50,4 +50,8 @@ TagManager:
   - name: DragPiece
     userID: 2
     uniqueID: 15950267
+    locked: 0
+  - name: UIOverlay
+    userID: 3
+    uniqueID: 97062425
     locked: 0
