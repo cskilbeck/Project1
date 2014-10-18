@@ -37,7 +37,7 @@ namespace UI
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(false));
             EditorGUILayout.LabelField("Alpha:");
-            l.alpha = EditorGUILayout.Slider(l.alpha, 0, 1);
+            l.Alpha = EditorGUILayout.Slider(l.Alpha, 0, 1);
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndVertical();
         }
@@ -130,21 +130,19 @@ namespace UI
                 {
                     for (int i = 0; i < letters.Length; ++i)
                     {
-                        if (letters[i].gameObject != null)
+                        if (letters[i] != null && letters[i].gameObject != null)
                         {
                             DestroyImmediate(letters[i].gameObject);
                         }
                     }
                 }
 
-                gameObject.layer = 31;
-
                 letters = new Glyph[text.Length];
                 float x = 0;
                 for (int i = 0, l = text.Length; i < l; ++i)
                 {
                     Glyph g = UI.Glyph.Create(typeface, text[i]);
-                    g.transform.localPosition = new Vector3(x, 0, 0);
+                    g.transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, 0, Camera.main.nearClipPlane));
                     g.transform.SetParent(transform);
                     letters[i] = g;
                     x += g.advance;
@@ -164,19 +162,25 @@ namespace UI
             set
             {
                 alpha = value;
-                for (int i = 0; i < letters.Length; ++i)
+                if (letters != null)
                 {
-                    Glyph g = letters[i];
-                    if (g.letter != null)
+                    for (int i = 0; i < letters.Length; ++i)
                     {
-                        for (int j = 0; j < g.letter.Length; ++j)
+                        Glyph g = letters[i];
+                        if (g != null && g.letter != null)
                         {
-                            SpriteRenderer r = g.letter[j].GetComponent<SpriteRenderer>();
-                            if (r != null) // this should be redundant
+                            for (int j = 0; j < g.letter.Length; ++j)
                             {
-                                Color c = r.sharedMaterial.color;
-                                c.a = value;
-                                r.sharedMaterial.color = c;
+                                if (g.letter[j])
+                                {
+                                    SpriteRenderer r = g.letter[j].GetComponent<SpriteRenderer>();
+                                    if (r != null) // this should be redundant
+                                    {
+                                        Color c = r.color;
+                                        c.a = value;
+                                        r.color = c;
+                                    }
+                                }
                             }
                         }
                     }

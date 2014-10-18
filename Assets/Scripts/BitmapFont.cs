@@ -240,7 +240,7 @@ public class BitmapFont : ScriptableObject
             string dirName = Path.GetDirectoryName(sourceFilename);
             string fileName = Path.GetFileNameWithoutExtension(sourceFilename);
             string texturePageName = Path.Combine(dirName, fileName) + i.ToString() + ".png";
-            Texture2D page = new Texture2D(4, 4);
+            Texture2D page = new Texture2D(4, 4, TextureFormat.ARGB32, false);
             byte[] file = File.ReadAllBytes(texturePageName);
             if (file != null && file.Length != 0 && page.LoadImage(file))
             {

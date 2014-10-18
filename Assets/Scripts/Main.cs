@@ -46,11 +46,6 @@ public class Main : MonoBehaviour
         //banner.transform.position = new Vector3(100, 600, 0);
         //debugMessage = Label.Create(debugFont, "Hello, World!");
         //debugMessage.transform.position = new Vector3(100, 700);
-        Vector3 v0 = Vector3.zero;
-        Vector3 v1 = new Vector3(1, 0, 0);
-        v0 = MainCamera.Get().ScreenToWorldPoint(v0);
-        v1 = MainCamera.Get().ScreenToWorldPoint(v1);
-        Debug.Log("V0: " + v0.ToString() + ", V1: " + v1.ToString());
     }
 
     //////////////////////////////////////////////////////////////////////
