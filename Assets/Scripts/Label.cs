@@ -137,6 +137,15 @@ namespace UI
                     }
                 }
 
+                var pos = this.transform.localPosition;
+                var screenPos = Camera.main.WorldToScreenPoint(pos);
+                screenPos.x = Mathf.Floor(screenPos.x);
+                screenPos.y = Mathf.Floor(screenPos.y);
+                screenPos.z = Camera.main.nearClipPlane;
+                pos = Camera.main.ScreenToWorldPoint(screenPos);
+                pos.z = Camera.main.nearClipPlane;
+                this.transform.localPosition = pos;
+
                 letters = new Glyph[text.Length];
                 float x = 0;
                 for (int i = 0, l = text.Length; i < l; ++i)
