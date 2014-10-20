@@ -10,6 +10,37 @@ using System.IO;
 [CustomEditor(typeof(BitmapFont))]
 public class BitmapFontEditor : Editor
 {
+    public bool fold = true;
+
+    private static Texture2D CreatePreviewTexture(Texture2D page)
+    {
+        if (page != null)
+        {
+            Texture2D preview = new Texture2D(page.width, page.height, TextureFormat.ARGB32, true);
+            preview.filterMode = FilterMode.Bilinear;
+            Color[] contents = page.GetPixels();
+            var magenta = Color.magenta;
+            var s = contents.Length;
+            for (var i = 0; i < s; ++i)
+            {
+                var newCol = contents[i];
+                var sa = newCol.a;
+                var da = 1 - sa;
+                contents[i].r = newCol.r * sa + magenta.r * da;
+                contents[i].g = newCol.g * sa + magenta.g * da;
+                contents[i].b = newCol.b * sa + magenta.b * da;
+                contents[i].a = 1;
+            }
+            preview.SetPixels(contents);
+            preview.Apply(true, true);
+            return preview;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     [MenuItem("Assets/Create/BitmapFont")]
     static public void CreateBitmapFont()
     {
@@ -58,25 +89,35 @@ public class BitmapFontEditor : Editor
             pageValues[i] = i;
         }
 
-        EditorGUILayout.BeginVertical();
-        EditorGUILayout.LabelField(font.name + ", Pages: " + pageCount.ToString());
-        EditorGUILayout.IntField("Height:", font.data.Height);
-        EditorGUILayout.IntField("Glyphs:", font.data.Glyphs.Count);
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Page: ");
-        currentPage = EditorGUILayout.IntPopup(currentPage, pageNames, pageValues);
-        EditorGUILayout.EndHorizontal();
-        EditorGUILayout.EndVertical();
+        fold = EditorGUILayout.InspectorTitlebar(true, font);
+        if (fold)
+        {
+            EditorGUILayout.LabelField("Pages: " + pageCount.ToString());
+            EditorGUILayout.LabelField("Height: " + font.data.Height.ToString());
+            EditorGUILayout.LabelField("Glyphs: " + font.data.Glyphs.Count.ToString());
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Page: ");
+            currentPage = EditorGUILayout.IntPopup(currentPage, pageNames, pageValues);
+            EditorGUILayout.EndHorizontal();
+        }
 
-        Texture2D page = font.pages[currentPage];
-        if (page != null)
+        if (font.previewPages == null)
+        {
+            font.previewPages = new Texture2D[pageCount];
+        }
+        Texture2D page = font.previewPages[currentPage];
+        if (page == null)
+        {
+            font.previewPages[currentPage] = page = CreatePreviewTexture(font.pages[currentPage]);
+        }
+        if(page != null)
         {
             float scale = Mathf.Min(1.0f, 256.0f / Mathf.Min(page.width, page.height));
             Rect topLeft = EditorGUILayout.BeginVertical();
             Rect inner = new Rect(0, 0, page.width * scale, page.height * scale);
             topLeft.size = new Vector2(256, 256);
             scrollPosition = GUI.BeginScrollView(topLeft, scrollPosition, inner);
-            EditorGUI.DrawTextureTransparent(inner, page);
+            EditorGUI.DrawPreviewTexture(inner, page);
             GUI.EndScrollView();
             EditorGUILayout.EndVertical();
         }
@@ -202,6 +243,9 @@ public class BitmapFont : ScriptableObject
     [SerializeField]
     public Texture2D[] pages;
 
+    [NonSerialized]
+    public Texture2D[] previewPages;
+
     public class GlyphRenderer
     {
 		public char c;
@@ -235,6 +279,7 @@ public class BitmapFont : ScriptableObject
     private void LoadTextures()
     {
         pages = new Texture2D[data.PageCount];
+        previewPages = new Texture2D[data.PageCount];
         for (int i = 0; i < data.PageCount; ++i)
         {
             string dirName = Path.GetDirectoryName(sourceFilename);

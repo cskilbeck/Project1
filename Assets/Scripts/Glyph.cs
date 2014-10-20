@@ -73,7 +73,6 @@ namespace UI
                         {
                             sr.sprite = sprite;
                             sr.material = Glyph.Material;
-                            float pixelsPerUnit = sprite.rect.width / sprite.bounds.size.x;
                             go.transform.localPosition = new Vector3((-0.25f + g.offsets[i].x) * pixel.x, (0.25f + font.data.Height - g.offsets[i].y) * pixel.y, nearZ);
                             sr.sortingOrder = i;
                             go.transform.SetParent(transform);

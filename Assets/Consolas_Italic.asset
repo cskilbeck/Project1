@@ -1,0 +1,1733 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c02ad9a3f1e59f4ba24544457b7892d, type: 3}
+  m_Name: Consolas_Italic
+  m_EditorClassIdentifier: 
+  sourceFilename: d:/Users/chs/Documents/Visual Studio 2012/Projects/TypeScriptTest/TypeScriptTest/public_html/img/Consolas_Italic.bitmapfont
+  data:
+    PageCount: 1
+    Height: 22
+    InternalLeading: 0
+    Baseline: 15.80176
+    Layers:
+      Count: 2
+      Layer:
+      - offsetX: 2
+        offsetY: 1
+        color: FFFFFFFF
+      - offsetX: 0
+        offsetY: 0
+        color: FFFFFFFF
+    Glyphs:
+      Count: 96
+      Glyph:
+      - charcode: 32
+        images: 0
+        advance: 6.15527296
+        Graphic: []
+      - charcode: 33
+        images: 2
+        advance: 6.15527296
+        Graphic:
+        - offsetX: .494140595
+          offsetY: .30078131
+          x: 203
+          y: 22
+          w: 6
+          h: 17
+          page: 0
+        - offsetX: .494140595
+          offsetY: .30078131
+          x: 247
+          y: 37
+          w: 6
+          h: 17
+          page: 0
+      - charcode: 34
+        images: 2
+        advance: 7.91699219
+        Graphic:
+        - offsetX: .90234381
+          offsetY: .30078131
+          x: 112
+          y: 71
+          w: 8
+          h: 6
+          page: 0
+        - offsetX: .90234381
+          offsetY: .30078131
+          x: 121
+          y: 71
+          w: 8
+          h: 6
+          page: 0
+      - charcode: 35
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: .655273378
+          offsetY: .30078131
+          x: 376
+          y: 19
+          w: 12
+          h: 17
+          page: 0
+        - offsetX: .655273378
+          offsetY: .30078131
+          x: 389
+          y: 19
+          w: 12
+          h: 17
+          page: 0
+      - charcode: 36
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: -.161132798
+          offsetY: -.762695312
+          x: 59
+          y: 1
+          w: 12
+          h: 21
+          page: 0
+        - offsetX: -.161132798
+          offsetY: -.762695312
+          x: 72
+          y: 1
+          w: 12
+          h: 21
+          page: 0
+      - charcode: 37
+        images: 2
+        advance: 18.9169903
+        Graphic:
+        - offsetX: .698242188
+          offsetY: 0
+          x: 211
+          y: 1
+          w: 18
+          h: 18
+          page: 0
+        - offsetX: .698242188
+          offsetY: 0
+          x: 230
+          y: 1
+          w: 18
+          h: 18
+          page: 0
+      - charcode: 38
+        images: 2
+        advance: 14.96387
+        Graphic:
+        - offsetX: .698242188
+          offsetY: 1.34277296
+          x: 488
+          y: 37
+          w: 14
+          h: 16
+          page: 0
+        - offsetX: .698242188
+          offsetY: 1.34277296
+          x: 210
+          y: 38
+          w: 14
+          h: 16
+          page: 0
+      - charcode: 39
+        images: 2
+        advance: 4.84472704
+        Graphic:
+        - offsetX: 1.56835902
+          offsetY: .30078131
+          x: 136
+          y: 71
+          w: 3
+          h: 6
+          page: 0
+        - offsetX: 1.56835902
+          offsetY: .30078131
+          x: 140
+          y: 71
+          w: 3
+          h: 6
+          page: 0
+      - charcode: 40
+        images: 2
+        advance: 8.35742188
+        Graphic:
+        - offsetX: 1.78320301
+          offsetY: 0
+          x: 1
+          y: 1
+          w: 9
+          h: 22
+          page: 0
+        - offsetX: 1.78320301
+          offsetY: 0
+          x: 11
+          y: 1
+          w: 9
+          h: 22
+          page: 0
+      - charcode: 41
+        images: 2
+        advance: 8.35742188
+        Graphic:
+        - offsetX: -2.40625
+          offsetY: 0
+          x: 21
+          y: 1
+          w: 9
+          h: 22
+          page: 0
+        - offsetX: -2.40625
+          offsetY: 0
+          x: 31
+          y: 1
+          w: 9
+          h: 22
+          page: 0
+      - charcode: 42
+        images: 2
+        advance: 9.67871094
+        Graphic:
+        - offsetX: 1.14941394
+          offsetY: .30078131
+          x: 68
+          y: 71
+          w: 9
+          h: 9
+          page: 0
+        - offsetX: 1.14941394
+          offsetY: .30078131
+          x: 78
+          y: 71
+          w: 9
+          h: 9
+          page: 0
+      - charcode: 43
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: 1.23535204
+          offsetY: 3.23339796
+          x: 492
+          y: 69
+          w: 11
+          h: 11
+          page: 0
+        - offsetX: 1.23535204
+          offsetY: 3.23339796
+          x: 442
+          y: 70
+          w: 11
+          h: 11
+          page: 0
+      - charcode: 44
+        images: 2
+        advance: 6.15527296
+        Graphic:
+        - offsetX: -.547851622
+          offsetY: 13.6318398
+          x: 504
+          y: 68
+          w: 5
+          h: 6
+          page: 0
+        - offsetX: -.547851622
+          offsetY: 13.6318398
+          x: 130
+          y: 71
+          w: 5
+          h: 6
+          page: 0
+      - charcode: 45
+        images: 2
+        advance: 9.23828125
+        Graphic:
+        - offsetX: 1.33203101
+          offsetY: 9.37792969
+          x: 194
+          y: 71
+          w: 7
+          h: 3
+          page: 0
+        - offsetX: 1.33203101
+          offsetY: 9.37792969
+          x: 280
+          y: 71
+          w: 7
+          h: 3
+          page: 0
+      - charcode: 46
+        images: 2
+        advance: 6.15527296
+        Graphic:
+        - offsetX: .397460908
+          offsetY: 13.1914101
+          x: 184
+          y: 71
+          w: 4
+          h: 4
+          page: 0
+        - offsetX: .397460908
+          offsetY: 13.1914101
+          x: 189
+          y: 71
+          w: 4
+          h: 4
+          page: 0
+      - charcode: 47
+        images: 2
+        advance: 10.1191397
+        Graphic:
+        - offsetX: .47265631
+          offsetY: .247070298
+          x: 167
+          y: 1
+          w: 10
+          h: 20
+          page: 0
+        - offsetX: .47265631
+          offsetY: .247070298
+          x: 178
+          y: 1
+          w: 10
+          h: 20
+          page: 0
+      - charcode: 48
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .794921875
+          offsetY: .30078131
+          x: 493
+          y: 19
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: .794921875
+          offsetY: .30078131
+          x: 211
+          y: 20
+          w: 11
+          h: 17
+          page: 0
+      - charcode: 49
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: 3.49121094
+          offsetY: .698242188
+          x: 414
+          y: 54
+          w: 6
+          h: 16
+          page: 0
+        - offsetX: 3.49121094
+          offsetY: .698242188
+          x: 421
+          y: 54
+          w: 6
+          h: 16
+          page: 0
+      - charcode: 50
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .311523408
+          offsetY: .30078131
+          x: 223
+          y: 20
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: .311523408
+          offsetY: .30078131
+          x: 235
+          y: 20
+          w: 11
+          h: 17
+          page: 0
+      - charcode: 51
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .612304688
+          offsetY: .30078131
+          x: 167
+          y: 22
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: .612304688
+          offsetY: .30078131
+          x: 179
+          y: 22
+          w: 11
+          h: 17
+          page: 0
+      - charcode: 52
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .0859375
+          offsetY: .30078131
+          x: 402
+          y: 19
+          w: 12
+          h: 17
+          page: 0
+        - offsetX: .0859375
+          offsetY: .30078131
+          x: 415
+          y: 19
+          w: 12
+          h: 17
+          page: 0
+      - charcode: 53
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .34375
+          offsetY: .698242188
+          x: 428
+          y: 19
+          w: 12
+          h: 17
+          page: 0
+        - offsetX: .34375
+          offsetY: .698242188
+          x: 441
+          y: 19
+          w: 12
+          h: 17
+          page: 0
+      - charcode: 54
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .784179688
+          offsetY: .30078131
+          x: 191
+          y: 22
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: .784179688
+          offsetY: .30078131
+          x: 59
+          y: 23
+          w: 11
+          h: 17
+          page: 0
+      - charcode: 55
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: 1.83691394
+          offsetY: .698242188
+          x: 71
+          y: 23
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: 1.83691394
+          offsetY: .698242188
+          x: 83
+          y: 23
+          w: 11
+          h: 17
+          page: 0
+      - charcode: 56
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .440429688
+          offsetY: .30078131
+          x: 95
+          y: 23
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: .440429688
+          offsetY: .30078131
+          x: 107
+          y: 23
+          w: 11
+          h: 17
+          page: 0
+      - charcode: 57
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: 1.29980505
+          offsetY: .30078131
+          x: 119
+          y: 23
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: 1.29980505
+          offsetY: .30078131
+          x: 131
+          y: 23
+          w: 11
+          h: 17
+          page: 0
+      - charcode: 58
+        images: 2
+        advance: 6.15527296
+        Graphic:
+        - offsetX: .397460908
+          offsetY: 4.51171923
+          x: 504
+          y: 54
+          w: 5
+          h: 13
+          page: 0
+        - offsetX: .397460908
+          offsetY: 4.51171923
+          x: 62
+          y: 58
+          w: 5
+          h: 13
+          page: 0
+      - charcode: 59
+        images: 2
+        advance: 6.15527296
+        Graphic:
+        - offsetX: -.547851622
+          offsetY: 4.51171923
+          x: 442
+          y: 54
+          w: 6
+          h: 15
+          page: 0
+        - offsetX: -.547851622
+          offsetY: 4.51171923
+          x: 449
+          y: 54
+          w: 6
+          h: 15
+          page: 0
+      - charcode: 60
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: 1.23535204
+          offsetY: 1.95507801
+          x: 456
+          y: 54
+          w: 11
+          h: 14
+          page: 0
+        - offsetX: 1.23535204
+          offsetY: 1.95507801
+          x: 468
+          y: 54
+          w: 11
+          h: 14
+          page: 0
+      - charcode: 61
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: 1.23535204
+          offsetY: 4.9628911
+          x: 88
+          y: 71
+          w: 11
+          h: 8
+          page: 0
+        - offsetX: 1.23535204
+          offsetY: 4.9628911
+          x: 100
+          y: 71
+          w: 11
+          h: 8
+          page: 0
+      - charcode: 62
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: 1.23535204
+          offsetY: 1.95507801
+          x: 480
+          y: 54
+          w: 11
+          h: 14
+          page: 0
+        - offsetX: 1.23535204
+          offsetY: 1.95507801
+          x: 492
+          y: 54
+          w: 11
+          h: 14
+          page: 0
+      - charcode: 63
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .923828125
+          offsetY: 0
+          x: 143
+          y: 23
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: .923828125
+          offsetY: 0
+          x: 1
+          y: 24
+          w: 11
+          h: 17
+          page: 0
+      - charcode: 64
+        images: 2
+        advance: 16.2744102
+        Graphic:
+        - offsetX: .34375
+          offsetY: -.04296875
+          x: 249
+          y: 1
+          w: 17
+          h: 17
+          page: 0
+        - offsetX: .34375
+          offsetY: -.04296875
+          x: 267
+          y: 1
+          w: 17
+          h: 17
+          page: 0
+      - charcode: 65
+        images: 2
+        advance: 16.2744102
+        Graphic:
+        - offsetX: -.2578125
+          offsetY: .698242188
+          x: 360
+          y: 37
+          w: 15
+          h: 16
+          page: 0
+        - offsetX: -.2578125
+          offsetY: .698242188
+          x: 376
+          y: 37
+          w: 15
+          h: 16
+          page: 0
+      - charcode: 66
+        images: 2
+        advance: 12.7617197
+        Graphic:
+        - offsetX: .751953125
+          offsetY: .698242188
+          x: 40
+          y: 42
+          w: 11
+          h: 16
+          page: 0
+        - offsetX: .751953125
+          offsetY: .698242188
+          x: 282
+          y: 54
+          w: 11
+          h: 16
+          page: 0
+      - charcode: 67
+        images: 2
+        advance: 17.1552696
+        Graphic:
+        - offsetX: .934570312
+          offsetY: .30078131
+          x: 393
+          y: 1
+          w: 16
+          h: 17
+          page: 0
+        - offsetX: .934570312
+          offsetY: .30078131
+          x: 410
+          y: 1
+          w: 16
+          h: 17
+          page: 0
+      - charcode: 68
+        images: 2
+        advance: 15.4042997
+        Graphic:
+        - offsetX: .751953125
+          offsetY: .698242188
+          x: 225
+          y: 38
+          w: 14
+          h: 16
+          page: 0
+        - offsetX: .751953125
+          offsetY: .698242188
+          x: 164
+          y: 40
+          w: 14
+          h: 16
+          page: 0
+      - charcode: 69
+        images: 2
+        advance: 11.4404297
+        Graphic:
+        - offsetX: .55859381
+          offsetY: .698242188
+          x: 294
+          y: 54
+          w: 11
+          h: 16
+          page: 0
+        - offsetX: .55859381
+          offsetY: .698242188
+          x: 306
+          y: 54
+          w: 11
+          h: 16
+          page: 0
+      - charcode: 70
+        images: 2
+        advance: 10.5595703
+        Graphic:
+        - offsetX: .580078125
+          offsetY: .698242188
+          x: 342
+          y: 54
+          w: 10
+          h: 16
+          page: 0
+        - offsetX: .580078125
+          offsetY: .698242188
+          x: 353
+          y: 54
+          w: 10
+          h: 16
+          page: 0
+      - charcode: 71
+        images: 2
+        advance: 18.4765606
+        Graphic:
+        - offsetX: .934570312
+          offsetY: .30078131
+          x: 285
+          y: 1
+          w: 17
+          h: 17
+          page: 0
+        - offsetX: .934570312
+          offsetY: .30078131
+          x: 303
+          y: 1
+          w: 17
+          h: 17
+          page: 0
+      - charcode: 72
+        images: 2
+        advance: 14.96387
+        Graphic:
+        - offsetX: .73046881
+          offsetY: .698242188
+          x: 179
+          y: 40
+          w: 14
+          h: 16
+          page: 0
+        - offsetX: .73046881
+          offsetY: .698242188
+          x: 194
+          y: 40
+          w: 14
+          h: 16
+          page: 0
+      - charcode: 73
+        images: 2
+        advance: 6.15527296
+        Graphic:
+        - offsetX: .623046875
+          offsetY: .698242188
+          x: 428
+          y: 54
+          w: 6
+          h: 16
+          page: 0
+        - offsetX: .623046875
+          offsetY: .698242188
+          x: 435
+          y: 54
+          w: 6
+          h: 16
+          page: 0
+      - charcode: 74
+        images: 2
+        advance: 10.5595703
+        Graphic:
+        - offsetX: -.504882812
+          offsetY: .698242188
+          x: 13
+          y: 24
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: -.504882812
+          offsetY: .698242188
+          x: 25
+          y: 24
+          w: 11
+          h: 17
+          page: 0
+      - charcode: 75
+        images: 2
+        advance: 13.64258
+        Graphic:
+        - offsetX: .794921875
+          offsetY: .698242188
+          x: 102
+          y: 41
+          w: 13
+          h: 16
+          page: 0
+        - offsetX: .794921875
+          offsetY: .698242188
+          x: 57
+          y: 41
+          w: 14
+          h: 16
+          page: 0
+      - charcode: 76
+        images: 2
+        advance: 9.67871094
+        Graphic:
+        - offsetX: .7734375
+          offsetY: .698242188
+          x: 386
+          y: 54
+          w: 9
+          h: 16
+          page: 0
+        - offsetX: .7734375
+          offsetY: .698242188
+          x: 396
+          y: 54
+          w: 9
+          h: 16
+          page: 0
+      - charcode: 77
+        images: 2
+        advance: 19.7978497
+        Graphic:
+        - offsetX: .0107421903
+          offsetY: .698242188
+          x: 322
+          y: 37
+          w: 18
+          h: 16
+          page: 0
+        - offsetX: .0107421903
+          offsetY: .698242188
+          x: 341
+          y: 37
+          w: 18
+          h: 16
+          page: 0
+      - charcode: 78
+        images: 2
+        advance: 16.2744102
+        Graphic:
+        - offsetX: .762695312
+          offsetY: .698242188
+          x: 392
+          y: 37
+          w: 15
+          h: 16
+          page: 0
+        - offsetX: .762695312
+          offsetY: .698242188
+          x: 408
+          y: 37
+          w: 15
+          h: 16
+          page: 0
+      - charcode: 79
+        images: 2
+        advance: 18.4765606
+        Graphic:
+        - offsetX: .880859375
+          offsetY: .30078131
+          x: 321
+          y: 1
+          w: 17
+          h: 17
+          page: 0
+        - offsetX: .880859375
+          offsetY: .30078131
+          x: 339
+          y: 1
+          w: 17
+          h: 17
+          page: 0
+      - charcode: 80
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .762695312
+          offsetY: .698242188
+          x: 144
+          y: 41
+          w: 12
+          h: 16
+          page: 0
+        - offsetX: .762695312
+          offsetY: .698242188
+          x: 1
+          y: 42
+          w: 12
+          h: 16
+          page: 0
+      - charcode: 81
+        images: 2
+        advance: 18.4765606
+        Graphic:
+        - offsetX: .880859375
+          offsetY: .30078131
+          x: 357
+          y: 1
+          w: 17
+          h: 17
+          page: 0
+        - offsetX: .880859375
+          offsetY: .30078131
+          x: 375
+          y: 1
+          w: 17
+          h: 17
+          page: 0
+      - charcode: 82
+        images: 2
+        advance: 12.7617197
+        Graphic:
+        - offsetX: .913085878
+          offsetY: .698242188
+          x: 14
+          y: 42
+          w: 12
+          h: 16
+          page: 0
+        - offsetX: .913085878
+          offsetY: .698242188
+          x: 27
+          y: 42
+          w: 12
+          h: 16
+          page: 0
+      - charcode: 83
+        images: 2
+        advance: 11.4404297
+        Graphic:
+        - offsetX: -.161132798
+          offsetY: .30078131
+          x: 37
+          y: 24
+          w: 11
+          h: 17
+          page: 0
+        - offsetX: -.161132798
+          offsetY: .30078131
+          x: 454
+          y: 19
+          w: 12
+          h: 17
+          page: 0
+      - charcode: 84
+        images: 2
+        advance: 9.23828125
+        Graphic:
+        - offsetX: .483398408
+          offsetY: .698242188
+          x: 364
+          y: 54
+          w: 10
+          h: 16
+          page: 0
+        - offsetX: .483398408
+          offsetY: .698242188
+          x: 375
+          y: 54
+          w: 10
+          h: 16
+          page: 0
+      - charcode: 85
+        images: 2
+        advance: 14.0830097
+        Graphic:
+        - offsetX: 1.35351598
+          offsetY: .698242188
+          x: 264
+          y: 19
+          w: 13
+          h: 17
+          page: 0
+        - offsetX: 1.35351598
+          offsetY: .698242188
+          x: 278
+          y: 19
+          w: 13
+          h: 17
+          page: 0
+      - charcode: 86
+        images: 2
+        advance: 15.4042997
+        Graphic:
+        - offsetX: 1.12793005
+          offsetY: .698242188
+          x: 424
+          y: 37
+          w: 15
+          h: 16
+          page: 0
+        - offsetX: 1.12793005
+          offsetY: .698242188
+          x: 440
+          y: 37
+          w: 15
+          h: 16
+          page: 0
+      - charcode: 87
+        images: 2
+        advance: 19.7978497
+        Graphic:
+        - offsetX: 1.41796899
+          offsetY: .698242188
+          x: 282
+          y: 37
+          w: 19
+          h: 16
+          page: 0
+        - offsetX: 1.41796899
+          offsetY: .698242188
+          x: 302
+          y: 37
+          w: 19
+          h: 16
+          page: 0
+      - charcode: 88
+        images: 2
+        advance: 14.96387
+        Graphic:
+        - offsetX: .171875
+          offsetY: .698242188
+          x: 456
+          y: 37
+          w: 15
+          h: 16
+          page: 0
+        - offsetX: .171875
+          offsetY: .698242188
+          x: 472
+          y: 37
+          w: 15
+          h: 16
+          page: 0
+      - charcode: 89
+        images: 2
+        advance: 13.64258
+        Graphic:
+        - offsetX: .708984375
+          offsetY: .698242188
+          x: 72
+          y: 41
+          w: 14
+          h: 16
+          page: 0
+        - offsetX: .708984375
+          offsetY: .698242188
+          x: 87
+          y: 41
+          w: 14
+          h: 16
+          page: 0
+      - charcode: 90
+        images: 2
+        advance: 11
+        Graphic:
+        - offsetX: .193359405
+          offsetY: .698242188
+          x: 318
+          y: 54
+          w: 11
+          h: 16
+          page: 0
+        - offsetX: .193359405
+          offsetY: .698242188
+          x: 330
+          y: 54
+          w: 11
+          h: 16
+          page: 0
+      - charcode: 91
+        images: 2
+        advance: 7.03613281
+        Graphic:
+        - offsetX: .537109375
+          offsetY: .30078131
+          x: 125
+          y: 1
+          w: 8
+          h: 21
+          page: 0
+        - offsetX: .537109375
+          offsetY: .30078131
+          x: 134
+          y: 1
+          w: 8
+          h: 21
+          page: 0
+      - charcode: 92
+        images: 2
+        advance: 14.0830097
+        Graphic:
+        - offsetX: 2.44921899
+          offsetY: .247070298
+          x: 189
+          y: 1
+          w: 10
+          h: 20
+          page: 0
+        - offsetX: 2.44921899
+          offsetY: .247070298
+          x: 200
+          y: 1
+          w: 10
+          h: 20
+          page: 0
+      - charcode: 93
+        images: 2
+        advance: 7.03613281
+        Graphic:
+        - offsetX: -1.35351598
+          offsetY: .30078131
+          x: 143
+          y: 1
+          w: 8
+          h: 21
+          page: 0
+        - offsetX: -1.35351598
+          offsetY: .30078131
+          x: 152
+          y: 1
+          w: 8
+          h: 21
+          page: 0
+      - charcode: 94
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: 1.17089796
+          offsetY: .698242188
+          x: 144
+          y: 58
+          w: 11
+          h: 12
+          page: 0
+        - offsetX: 1.17089796
+          offsetY: .698242188
+          x: 247
+          y: 69
+          w: 11
+          h: 12
+          page: 0
+      - charcode: 95
+        images: 2
+        advance: 11
+        Graphic:
+        - offsetX: -.128906295
+          offsetY: 18.1543007
+          x: 288
+          y: 71
+          w: 12
+          h: 2
+          page: 0
+        - offsetX: -.128906295
+          offsetY: 18.1543007
+          x: 301
+          y: 71
+          w: 12
+          h: 2
+          page: 0
+      - charcode: 96
+        images: 2
+        advance: 9.23828125
+        Graphic:
+        - offsetX: 2.32031298
+          offsetY: -1.51464796
+          x: 170
+          y: 71
+          w: 6
+          h: 5
+          page: 0
+        - offsetX: 2.32031298
+          offsetY: -1.51464796
+          x: 177
+          y: 71
+          w: 6
+          h: 5
+          page: 0
+      - charcode: 97
+        images: 2
+        advance: 14.5234404
+        Graphic:
+        - offsetX: .612304688
+          offsetY: 4.51171923
+          x: 209
+          y: 55
+          w: 13
+          h: 13
+          page: 0
+        - offsetX: .612304688
+          offsetY: 4.51171923
+          x: 223
+          y: 55
+          w: 13
+          h: 13
+          page: 0
+      - charcode: 98
+        images: 2
+        advance: 14.5234404
+        Graphic:
+        - offsetX: .461914092
+          offsetY: .30078131
+          x: 292
+          y: 19
+          w: 13
+          h: 17
+          page: 0
+        - offsetX: .461914092
+          offsetY: .30078131
+          x: 306
+          y: 19
+          w: 13
+          h: 17
+          page: 0
+      - charcode: 99
+        images: 2
+        advance: 14.0830097
+        Graphic:
+        - offsetX: .655273378
+          offsetY: 4.51171923
+          x: 185
+          y: 57
+          w: 12
+          h: 13
+          page: 0
+        - offsetX: .655273378
+          offsetY: 4.51171923
+          x: 237
+          y: 55
+          w: 13
+          h: 13
+          page: 0
+      - charcode: 100
+        images: 2
+        advance: 14.5234404
+        Graphic:
+        - offsetX: .612304688
+          offsetY: .30078131
+          x: 427
+          y: 1
+          w: 14
+          h: 17
+          page: 0
+        - offsetX: .612304688
+          offsetY: .30078131
+          x: 442
+          y: 1
+          w: 14
+          h: 17
+          page: 0
+      - charcode: 101
+        images: 2
+        advance: 14.0830097
+        Graphic:
+        - offsetX: .655273378
+          offsetY: 4.51171923
+          x: 251
+          y: 55
+          w: 13
+          h: 13
+          page: 0
+        - offsetX: .655273378
+          offsetY: 4.51171923
+          x: 265
+          y: 55
+          w: 13
+          h: 13
+          page: 0
+      - charcode: 102
+        images: 2
+        advance: 6.15527296
+        Graphic:
+        - offsetX: .2578125
+          offsetY: 0
+          x: 49
+          y: 24
+          w: 7
+          h: 17
+          page: 0
+        - offsetX: .2578125
+          offsetY: 0
+          x: 155
+          y: 23
+          w: 8
+          h: 17
+          page: 0
+      - charcode: 103
+        images: 2
+        advance: 14.5234404
+        Graphic:
+        - offsetX: .333007812
+          offsetY: 4.51171923
+          x: 457
+          y: 1
+          w: 14
+          h: 17
+          page: 0
+        - offsetX: .333007812
+          offsetY: 4.51171923
+          x: 472
+          y: 1
+          w: 14
+          h: 17
+          page: 0
+      - charcode: 104
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: .494140595
+          offsetY: .30078131
+          x: 467
+          y: 19
+          w: 12
+          h: 17
+          page: 0
+        - offsetX: .494140595
+          offsetY: .30078131
+          x: 480
+          y: 19
+          w: 12
+          h: 17
+          page: 0
+      - charcode: 105
+        images: 2
+        advance: 5.27441406
+        Graphic:
+        - offsetX: .107421897
+          offsetY: .0322265588
+          x: 254
+          y: 37
+          w: 6
+          h: 17
+          page: 0
+        - offsetX: .107421897
+          offsetY: .0322265588
+          x: 261
+          y: 37
+          w: 6
+          h: 17
+          page: 0
+      - charcode: 106
+        images: 2
+        advance: 5.71484423
+        Graphic:
+        - offsetX: -2.09472704
+          offsetY: .0322265588
+          x: 41
+          y: 1
+          w: 8
+          h: 22
+          page: 0
+        - offsetX: -2.09472704
+          offsetY: .0322265588
+          x: 50
+          y: 1
+          w: 8
+          h: 22
+          page: 0
+      - charcode: 107
+        images: 2
+        advance: 12.7617197
+        Graphic:
+        - offsetX: .494140595
+          offsetY: .30078131
+          x: 320
+          y: 19
+          w: 13
+          h: 17
+          page: 0
+        - offsetX: .494140595
+          offsetY: .30078131
+          x: 334
+          y: 19
+          w: 13
+          h: 17
+          page: 0
+      - charcode: 108
+        images: 2
+        advance: 5.27441406
+        Graphic:
+        - offsetX: .150390595
+          offsetY: .30078131
+          x: 268
+          y: 37
+          w: 6
+          h: 17
+          page: 0
+        - offsetX: .150390595
+          offsetY: .30078131
+          x: 275
+          y: 37
+          w: 6
+          h: 17
+          page: 0
+      - charcode: 109
+        images: 2
+        advance: 20.6787109
+        Graphic:
+        - offsetX: .483398408
+          offsetY: 4.51171923
+          x: 68
+          y: 58
+          w: 19
+          h: 12
+          page: 0
+        - offsetX: .483398408
+          offsetY: 4.51171923
+          x: 88
+          y: 58
+          w: 19
+          h: 12
+          page: 0
+      - charcode: 110
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: .494140595
+          offsetY: 4.51171923
+          x: 1
+          y: 59
+          w: 12
+          h: 12
+          page: 0
+        - offsetX: .494140595
+          offsetY: 4.51171923
+          x: 14
+          y: 59
+          w: 12
+          h: 12
+          page: 0
+      - charcode: 111
+        images: 2
+        advance: 14.0830097
+        Graphic:
+        - offsetX: .655273378
+          offsetY: 4.51171923
+          x: 157
+          y: 57
+          w: 13
+          h: 13
+          page: 0
+        - offsetX: .655273378
+          offsetY: 4.51171923
+          x: 171
+          y: 57
+          w: 13
+          h: 13
+          page: 0
+      - charcode: 112
+        images: 2
+        advance: 14.5234404
+        Graphic:
+        - offsetX: -.0966796875
+          offsetY: 4.51171923
+          x: 487
+          y: 1
+          w: 14
+          h: 17
+          page: 0
+        - offsetX: -.0966796875
+          offsetY: 4.51171923
+          x: 249
+          y: 19
+          w: 14
+          h: 17
+          page: 0
+      - charcode: 113
+        images: 2
+        advance: 14.5234404
+        Graphic:
+        - offsetX: .612304688
+          offsetY: 4.51171923
+          x: 348
+          y: 19
+          w: 13
+          h: 17
+          page: 0
+        - offsetX: .612304688
+          offsetY: 4.51171923
+          x: 362
+          y: 19
+          w: 13
+          h: 17
+          page: 0
+      - charcode: 114
+        images: 2
+        advance: 7.03613281
+        Graphic:
+        - offsetX: -.171875
+          offsetY: 4.51171923
+          x: 40
+          y: 59
+          w: 8
+          h: 12
+          page: 0
+        - offsetX: -.171875
+          offsetY: 4.51171923
+          x: 271
+          y: 69
+          w: 8
+          h: 12
+          page: 0
+      - charcode: 115
+        images: 2
+        advance: 9.67871094
+        Graphic:
+        - offsetX: -.30078131
+          offsetY: 4.51171923
+          x: 198
+          y: 57
+          w: 9
+          h: 13
+          page: 0
+        - offsetX: -.30078131
+          offsetY: 4.51171923
+          x: 52
+          y: 58
+          w: 9
+          h: 13
+          page: 0
+      - charcode: 116
+        images: 2
+        advance: 6.59570312
+        Graphic:
+        - offsetX: .333007812
+          offsetY: .47265631
+          x: 503
+          y: 37
+          w: 7
+          h: 16
+          page: 0
+        - offsetX: .333007812
+          offsetY: .47265631
+          x: 406
+          y: 54
+          w: 7
+          h: 16
+          page: 0
+      - charcode: 117
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: 1.203125
+          offsetY: 4.8125
+          x: 259
+          y: 69
+          w: 11
+          h: 12
+          page: 0
+        - offsetX: 1.203125
+          offsetY: 4.8125
+          x: 456
+          y: 69
+          w: 11
+          h: 12
+          page: 0
+      - charcode: 118
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: .590820312
+          offsetY: 4.8125
+          x: 27
+          y: 59
+          w: 12
+          h: 12
+          page: 0
+        - offsetX: .590820312
+          offsetY: 4.8125
+          x: 208
+          y: 69
+          w: 12
+          h: 12
+          page: 0
+      - charcode: 119
+        images: 2
+        advance: 17.5956993
+        Graphic:
+        - offsetX: .55859381
+          offsetY: 4.8125
+          x: 108
+          y: 58
+          w: 17
+          h: 12
+          page: 0
+        - offsetX: .55859381
+          offsetY: 4.8125
+          x: 126
+          y: 58
+          w: 17
+          h: 12
+          page: 0
+      - charcode: 120
+        images: 2
+        advance: 12.32129
+        Graphic:
+        - offsetX: -.322265595
+          offsetY: 4.8125
+          x: 221
+          y: 69
+          w: 12
+          h: 12
+          page: 0
+        - offsetX: -.322265595
+          offsetY: 4.8125
+          x: 234
+          y: 69
+          w: 12
+          h: 12
+          page: 0
+      - charcode: 121
+        images: 2
+        advance: 12.7617197
+        Graphic:
+        - offsetX: .451171905
+          offsetY: 4.8125
+          x: 116
+          y: 41
+          w: 13
+          h: 16
+          page: 0
+        - offsetX: .451171905
+          offsetY: 4.8125
+          x: 130
+          y: 41
+          w: 13
+          h: 16
+          page: 0
+      - charcode: 122
+        images: 2
+        advance: 10.1191397
+        Graphic:
+        - offsetX: -.762695312
+          offsetY: 4.8125
+          x: 468
+          y: 69
+          w: 11
+          h: 12
+          page: 0
+        - offsetX: -.762695312
+          offsetY: 4.8125
+          x: 480
+          y: 69
+          w: 11
+          h: 12
+          page: 0
+      - charcode: 123
+        images: 2
+        advance: 7.47656298
+        Graphic:
+        - offsetX: -.171875
+          offsetY: .698242188
+          x: 85
+          y: 1
+          w: 9
+          h: 21
+          page: 0
+        - offsetX: -.171875
+          offsetY: .698242188
+          x: 95
+          y: 1
+          w: 9
+          h: 21
+          page: 0
+      - charcode: 124
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: 5.75781298
+          offsetY: .30078131
+          x: 161
+          y: 1
+          w: 2
+          h: 21
+          page: 0
+        - offsetX: 5.75781298
+          offsetY: .30078131
+          x: 164
+          y: 1
+          w: 2
+          h: 21
+          page: 0
+      - charcode: 125
+        images: 2
+        advance: 7.47656298
+        Graphic:
+        - offsetX: -2.24511695
+          offsetY: .698242188
+          x: 105
+          y: 1
+          w: 9
+          h: 21
+          page: 0
+        - offsetX: -2.24511695
+          offsetY: .698242188
+          x: 115
+          y: 1
+          w: 9
+          h: 21
+          page: 0
+      - charcode: 126
+        images: 2
+        advance: 13.2021503
+        Graphic:
+        - offsetX: 1.07421899
+          offsetY: 6.21972704
+          x: 144
+          y: 71
+          w: 12
+          h: 5
+          page: 0
+        - offsetX: 1.07421899
+          offsetY: 6.21972704
+          x: 157
+          y: 71
+          w: 12
+          h: 5
+          page: 0
+      - charcode: 127
+        images: 0
+        advance: 0
+        Graphic: []
+  pages:
+  - {fileID: 2800000, guid: 75be31343731e1944a0fd1657007c23c, type: 2}
